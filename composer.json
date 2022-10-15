@@ -1,0 +1,78 @@
+{
+    "name": "upmind/provision-workbench",
+    "type": "project",
+    "description": "A simple web application which provides a UI for quick and easy testing of Upmind provision providers",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Harry Lewis",
+            "email": "harry@upmind.com"
+        }
+    ],
+    "require": {
+        "barryvdh/laravel-ide-helper": "^2.8",
+        "diglactic/laravel-breadcrumbs": "^8.0",
+        "fideloper/proxy": "^4.4",
+        "laravel/framework": "^6.20.26",
+        "laravel/tinker": "^2.5",
+        "upmind/provision-provider-base": "^3.0",
+        "upmind/provision-provider-hello-world": "^1.0"
+    },
+    "require-dev": {
+        "facade/ignition": "^1.16.15",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.5.8|^9.3.3"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan upmind:provision:cache"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php artisan migrate"
+        ]
+    }
+}

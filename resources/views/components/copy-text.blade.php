@@ -1,0 +1,1 @@
+<a class="copy-text" onclick="copyToClipboard(this.innerText)" style="z-index:1000; cursor: pointer;">{{ $slot }}</a>
