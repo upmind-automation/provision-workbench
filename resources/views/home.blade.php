@@ -41,7 +41,7 @@
             <i class="box icon"></i>
             Packages
         </a>
-        <a class="item width-20" href="https://github.com/upmind-automation/provision-workbench" target="_blank">
+        <a class="item width-20" href="https://github.com/upmind-automation/provision-workbench#readme" target="_blank">
             <i class="github icon"></i>
             GitHub
         </a>
