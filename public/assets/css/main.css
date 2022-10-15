@@ -107,3 +107,7 @@ body {
 .width-20 {
     width: 20%;
 }
+
+.word-break-all {
+    word-break: break-all;
+}

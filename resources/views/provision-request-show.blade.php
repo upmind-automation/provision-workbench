@@ -78,7 +78,7 @@
                         @foreach(Arr::dot($provision_request->getResult()->getData()) as $prop => $value)
                             <tr>
                                 <td class="collapsing">{{ $prop }}</td>
-                                <td class="@if(is_string($value)) selectable @endif">
+                                <td class="@if(is_string($value)) selectable @endif word-break-all">
                                     @if(is_string($value))
                                         @component('components.copy-text'){{ $value }}@endcomponent
                                     @else
