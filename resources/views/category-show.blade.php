@@ -22,8 +22,8 @@
     <div class="ui link cards">
         @foreach($category->getProviders() as $provider)
             <a class="ui fluid card" style="max-width:220px" href="{{ route('provider-show', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier()]) }}">
-                <div class="image">
-                    <img style="object-fit:cover; max-height:175px" src="{{ $provider->getAbout()->logo_url ?? url('assets/images/placeholder.png') }}" alt="{{ $provider->getIdentifier() }}">
+                <div class="image" style="height:110px; display:flex;">
+                    <img style="object-fit:@if($provider->getAbout()->logo_url) contain @else cover @endif; max-height:110px" src="{{ $provider->getAbout()->logo_url ?? url('assets/images/placeholder.png') }}" alt="{{ $provider->getIdentifier() }}">
                 </div>
                 <div class="content">
                     <div class="header">
