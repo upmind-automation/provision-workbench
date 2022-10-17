@@ -3,6 +3,11 @@
 All notable changes to the package will be documented in this file.
 
 
+## v1.0.6 - 2022-10-18
+
+- Display result data property validation rules in an info tooltip or a warning
+  if a property is unexpected
+
 ## v1.0.5 - 2022-10-18
 
 - Prefer source when installing upmind/* packages and auto for everything else
