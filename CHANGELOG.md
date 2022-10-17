@@ -3,7 +3,12 @@
 All notable changes to the package will be documented in this file.
 
 
-## v1.0.3 - 2022-10-15
+## v1.0.4 - 2022-10-17
+
+- Add duplicate button to provision request index view
+- Add delete button to provision request index view
+
+## v1.0.3 - 2022-10-17
 
 Add PHP ^7.4 version constraint
 
