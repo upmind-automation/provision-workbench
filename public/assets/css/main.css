@@ -111,3 +111,7 @@ body {
 .word-break-all {
     word-break: break-all;
 }
+
+td>.inline.icon>i {
+    margin: 0!important;
+}

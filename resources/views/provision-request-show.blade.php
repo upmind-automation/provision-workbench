@@ -60,7 +60,7 @@
             @endcomponent
         @endif
         @if($provision_request->isSuccess())
-            @if(!empty($provision_request->getResult()->getData()))
+            @if(!empty($result_data))
                 <table class="ui celled definition table" style="font-size:1rem;">
                     {{-- <thead>
                         <tr class="center aligned">
@@ -69,11 +69,26 @@
                         </tr>
                     </thead> --}}
                     <tbody>
-                        @foreach(Arr::dot($provision_request->getResult()->getData()) as $prop => $value)
+                        @foreach(Arr::dot($result_data) as $prop => $value)
                             <tr>
-                                <td class="collapsing">{{ $prop }}</td>
-                                <td class="@if(is_string($value)) selectable @endif word-break-all">
-                                    @if(is_string($value))
+                                @if(Arr::has($result_data_rules, $prop))
+                                    <td class="collapsing">
+                                        {{ $prop }}
+                                        <span class="ui inline icon" data-tooltip="{{ implode(' | ', Arr::get($result_data_rules, $prop)) }}" data-inverted>
+                                            <i class="blue info circle icon"></i>
+                                        </span>
+                                    </td>
+                                @else
+                                    {{-- Display a warning for unvalidated (unexpected) return values --}}
+                                    <td class="collapsing warning" data-tooltip="Unexpected return data property!" data-inverted>
+                                        {{ $prop }}
+                                        <span class="ui inline icon">
+                                            <i class="small icon exclamation triangle"></i>
+                                        </span>
+                                    </td>
+                                @endif
+                                <td class="@if(is_string($value) && !empty($value)) selectable @endif word-break-all">
+                                    @if(is_string($value) && !empty($value))
                                         @component('components.copy-text'){{ $value }}@endcomponent
                                     @else
                                         {{ json_encode($value) }}
@@ -172,10 +187,6 @@
                 @endcomponent
             @endif
             @if($provision_request->hasResult())
-                @php
-                    $result_data = $provision_request->getResult()->getData();
-                    $result_debug = $provision_request->getResult()->getDebug();
-                @endphp
                 <div class="ui basic padded segment">
                     <div class="ui accordion">
                         <div class="title active">
