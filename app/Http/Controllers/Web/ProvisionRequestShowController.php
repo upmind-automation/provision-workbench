@@ -27,7 +27,7 @@ class ProvisionRequestShowController extends Controller
 
         if ($function = $provision_request->getFunction()) {
             $resultDataValidator = Validator::make(
-                $result_data,
+                $result_data ?? [],
                 $function->getReturn()->getRules()->expand()
             );
 
