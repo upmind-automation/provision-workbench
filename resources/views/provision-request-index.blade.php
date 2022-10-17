@@ -90,6 +90,7 @@
                         <div class="ui tiny basic buttons">
                             <a class="ui icon button" href="{{ route('provision-request-show', ['provision_request' => $provision_request]) }}" data-tooltip="View request"><i class="eye icon"></i></a>
                             <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id]) }}" data-tooltip="Duplicate request"><i class="copy icon"></i></a>
+                            <a class="ui icon button" id="provision-request-delete-button-{{ $provision_request->id }}" data-tooltip="Delete request"><i class="trash icon"></i></a>
                         </div>
                     </td>
                 </tr>
@@ -111,4 +112,27 @@
             </tr>
         </tfoot>
     </table>
+
+    @foreach($provision_requests as $provision_request)
+        <div class="ui modal" id="provision-request-delete-modal-{{ $provision_request->id }}">
+            <i class="close icon"></i>
+            <div class="header">Confirm Delete</div>
+            <div class="content">Are you sure you wish to delete this provision request?</div>
+            <div class="actions">
+                <form method="POST" action="{{ route('provision-request-destroy', ['provision_request' => $provision_request, 'r' => Request::fullUrlWithQuery([])]) }}">
+                    @method('DELETE')
+                    @csrf
+                    <div class="ui black deny button">Cancel</div>
+                    <button class="ui negative right labeled icon button">Delete<i class="trash icon"></i></button>
+                </form>
+            </div>
+        </div>
+    @endforeach
+
+    <script>
+        @foreach($provision_requests as $provision_request)
+            $('#provision-request-delete-modal-{{ $provision_request->id }}').modal('attach events', '#provision-request-delete-button-{{ $provision_request->id }}', 'show');
+
+        @endforeach
+    </script>
 @endsection

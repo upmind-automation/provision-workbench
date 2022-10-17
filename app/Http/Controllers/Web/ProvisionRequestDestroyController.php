@@ -16,6 +16,10 @@ class ProvisionRequestDestroyController extends Controller
         $service = new ProvisionRequestService();
         $service->delete($provision_request);
 
-        return redirect(route('provision-request-index'));
+        $redirect = filter_var($request->get('r'), FILTER_VALIDATE_URL);
+
+        return redirect(
+            $redirect ?: route('provision-request-index')
+        );
     }
 }
