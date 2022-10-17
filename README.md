@@ -4,6 +4,7 @@
 
 A simple web application which provides a UI for quick and easy testing of Upmind provision providers.
 
+- [Requirements](#requirements)
 - [Installation](#installation)
   - [Quick-start](#quick-start)
 - [Usage](#usage)
@@ -13,18 +14,37 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 - [License](#license)
 - [Upmind](#upmind)
 
+## Requirements
+
+- PHP 7.4 or higher
+- Composer
+
 ## Installation
 
+**This project is intended to be used as a local development tool only and should NOT be hosted on the internet**
+
 ```bash
-composer create-project upmind/provision-workbench
+composer create-project upmind/provision-workbench --keep-vcs
 ```
 
 ### Quick-start
 
-See the below example to install shared-hosting provision providers and run the app:
+Run the application:
 
 ```bash
-composer require upmind/provision-provider-shared-hosting && php artisan serve
+php artisan serve
+```
+
+Install a provision category + providers e.g., shared-hosting:
+
+```bash
+composer require upmind/provision-provider-shared-hosting
+```
+
+Refresh provision registry (e.g., after adding a new provider or updating data set rules):
+
+```bash
+php artisan upmind:provision:cache
 ```
 
 ## Usage
