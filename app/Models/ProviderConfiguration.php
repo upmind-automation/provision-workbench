@@ -69,13 +69,17 @@ class ProviderConfiguration extends Model
         return $query->where('provider_code', $provider);
     }
 
-    public function getCategory(): CategoryRegister
+    public function getCategory(): ?CategoryRegister
     {
         return App::make(Registry::class)->getCategory($this->category_code);
     }
 
-    public function getProvider(): ProviderRegister
+    public function getProvider(): ?ProviderRegister
     {
-        return $this->getCategory()->getProvider($this->provider_code);
+        if (!$category = $this->getCategory()) {
+            return null;
+        }
+
+        return $category->getProvider($this->provider_code);
     }
 }

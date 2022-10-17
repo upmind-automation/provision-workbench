@@ -19,7 +19,16 @@ class ProvisionRequestStoreController extends Controller
     public function __invoke(Request $request)
     {
         $configuration = ProviderConfiguration::findOrFail($request->get('configuration_id'));
-        $function = $configuration->getCategory()->getFunction($request->get('function_name'));
+        if ($category = $configuration->getCategory()) {
+            $function = $category->getFunction($request->get('function_name'));
+        }
+
+        if (!isset($function)) {
+            return redirect()->back()->withErrors([
+                'function_name' => sprintf('Function %s not found', $request->get('function_name')),
+            ]);
+        }
+
         $parameters = $this->undot($request->get('parameter_data', []));
 
         $service = new ProvisionRequestService();
