@@ -3,6 +3,10 @@
 All notable changes to the package will be documented in this file.
 
 
+## v1.0.7 - 2022-10-17
+
+- Update upmind/provision-provider-base to v3.1.1
+
 ## v1.0.6 - 2022-10-17
 
 - Display result data property validation rules in an info tooltip or a warning
