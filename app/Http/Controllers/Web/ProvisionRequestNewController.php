@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\InteractsWithRegistry;
 use App\Models\ProviderConfiguration;
+use App\Models\ProvisionRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -18,12 +19,21 @@ class ProvisionRequestNewController extends Controller
 
     public function __invoke(Request $request, Registry $registry)
     {
+        if ($request->has('provision_request_id')) {
+            if ($provision_request = ProvisionRequest::find($request->get('provision_request_id'))) {
+                $category = $provision_request->getCategory();
+                $provider = $provision_request->getProvider();
+                $configuration = $provision_request->configuration;
+                $function = $provision_request->getFunction();
+            }
+        }
+
         if ($request->has('configuration_id')) {
             if ($configuration = ProviderConfiguration::find($request->get('configuration_id'))) {
                 $category = $configuration->getCategory();
                 $provider = $configuration->getProvider();
 
-                $function = $category->getFunction($request->get('function_name'));
+                $function = $function ?? $category->getFunction($request->get('function_name'));
             }
         }
 
@@ -50,6 +60,8 @@ class ProvisionRequestNewController extends Controller
             'category' => $category,
             'provider' => $provider,
             'function' => $function,
+            'provision_request' => $provision_request ?? null,
+            'parameter_data' => $provision_request->parameter_data ?? [],
         ]);
     }
 }

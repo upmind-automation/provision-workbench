@@ -89,6 +89,7 @@
                     <td class="collapsing">
                         <div class="ui tiny basic buttons">
                             <a class="ui icon button" href="{{ route('provision-request-show', ['provision_request' => $provision_request]) }}" data-tooltip="View request"><i class="eye icon"></i></a>
+                            <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id]) }}" data-tooltip="Duplicate request"><i class="copy icon"></i></a>
                         </div>
                     </td>
                 </tr>

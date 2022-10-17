@@ -39,7 +39,7 @@
                         'value' => null
                     ])),
                 'field_required' => true,
-                'field_value' => $configuration->category_code ?? Request::input('category_code'),
+                'field_value' => isset($category) ? $category->getIdentifier() : null,
                 'field_errors' => $errors->getBag('default')->get('category_code'),
             ])
             @endcomponent
@@ -72,7 +72,7 @@
                             'value' => null
                         ])),
                     'field_required' => true,
-                    'field_value' => $configuration->provider_code ?? Request::input('provider_code'),
+                    'field_value' => isset($provider) ? $provider->getIdentifier() : null,
                     'field_errors' => $errors->getBag('default')->get('provider_code'),
                 ])
                 @endcomponent
@@ -124,7 +124,7 @@
                                     'value' => null
                                 ])),
                             'field_required' => true,
-                            'field_value' => Request::input('configuration_id'),
+                            'field_value' => $configuration->id ?? null,
                             'field_errors' => $errors->getBag('default')->get('configuration_id'),
                         ])
                         @endcomponent
@@ -158,7 +158,7 @@
                                     'value' => null
                                 ])),
                             'field_required' => true,
-                            'field_value' => Request::input('function_name'),
+                            'field_value' => isset($function) ? $function->getName() : null,
                             'field_errors' => $errors->getBag('default')->get('function_name'),
                         ])
                         @endcomponent
@@ -186,7 +186,7 @@
                                         'field_attributes' => $html_field->attributes(),
                                         'field_validation_rules' => $html_field->validationRules(),
                                         'field_required' => $html_field->required(),
-                                        'field_value' => Request::input('parameter_data.' . $html_field->name()),
+                                        'field_value' => Arr::get($parameter_data, $html_field->name()),
                                         'field_errors' => $errors->getBag('parameter_data')->get($html_field->name()),
                                     ])
                                     @endcomponent

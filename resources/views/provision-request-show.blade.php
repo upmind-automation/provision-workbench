@@ -20,17 +20,11 @@
 
 @section('content')
     <div class="provision-request-show">
-        <form class="ui form" method="POST" action="{{ route('provision-request-new', ['configuration_id' => $provision_request->configuration_id, 'function_name' => $provision_request->function_name]) }}">
-            @csrf
-            @foreach($provision_request->flat_parameter_data as $param => $value)
-                <input type="hidden" name="parameter_data[{{ $param }}]" value="{{ $value }}"/>
-            @endforeach
-            <div class="ui basic buttons">
-                <button class="ui icon button" type="submit">Duplicate <i class="primary copy icon"></i></button>
-                <a class="ui icon button" href="{{ route('provision-request-index', ['configuration_id' => $provision_request->configuration_id, 'function_name' => $provision_request->function_name]) }}">Related Requests <i class="zoom-in icon"></i></a>
-                <a class="ui icon button" id="provision-request-delete-button">Delete <i class="red trash icon"></i></a>
-            </div>
-        </form>
+        <div class="ui basic buttons">
+            <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id]) }}">Duplicate <i class="primary copy icon"></i></a>
+            <a class="ui icon button" href="{{ route('provision-request-index', ['configuration_id' => $provision_request->configuration_id, 'function_name' => $provision_request->function_name]) }}">Related Requests <i class="zoom-in icon"></i></a>
+            <a class="ui icon button" id="provision-request-delete-button">Delete <i class="red trash icon"></i></a>
+        </div>
         @if($provision_request->isSuccess())
             @component('components.message', [
                 'message_colour' => 'green',
