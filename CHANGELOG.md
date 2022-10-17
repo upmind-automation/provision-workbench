@@ -3,6 +3,10 @@
 All notable changes to the package will be documented in this file.
 
 
+## v1.0.5 - 2022-10-18
+
+- Prefer source when installing upmind/* packages and auto for everything else
+
 ## v1.0.4 - 2022-10-17
 
 - Add duplicate button to provision request index view
