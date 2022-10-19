@@ -194,6 +194,7 @@
                                         'field_required' => $html_field->required(),
                                         'field_value' => Arr::get($parameter_data, $html_field->name()),
                                         'field_errors' => $errors->getBag('parameter_data')->get($html_field->name()),
+                                        'field_autofocus' => $loop->first,
                                     ])
                                     @endcomponent
                                 @endforeach

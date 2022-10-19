@@ -42,6 +42,9 @@
                 @if($field_disabled ?? false)
                     disabled
                 @endif
+                @if($field_autofocus ?? false)
+                    autofocus
+                @endif
             >{{ $field_value }}</textarea>
             @break
         @case(HtmlField::TYPE_CHECKBOX)
@@ -67,6 +70,9 @@
                     @endif
                     @if($field_disabled ?? false)
                         disabled
+                    @endif
+                    @if($field_autofocus ?? false)
+                        autofocus
                     @endif
                 />
                 <label></label>
@@ -99,6 +105,9 @@
                         @if($field_disabled ?? false)
                             disabled
                         @endif
+                        @if($field_autofocus ?? false)
+                            @if($loop->first) autofocus @endif
+                        @endif
                     />
                     <label for="{{ $field_id }}-{{ $option->value }}">{{ $option->label }}</label>
                 </div>
@@ -120,6 +129,9 @@
                 @endif
                 @if($field_disabled ?? false)
                     disabled
+                @endif
+                @if($field_autofocus ?? false)
+                    autofocus
                 @endif
             >
                 @foreach($field_options ?? [] as $option)
@@ -166,6 +178,9 @@
                     @if($field_disabled ?? false)
                         disabled
                     @endif
+                    @if($field_autofocus ?? false)
+                        autofocus
+                    @endif
                 />
                 <i
                     id="{{ $field_id }}-reveal"
@@ -206,6 +221,9 @@
                 @endif
                 @if($field_disabled ?? false)
                     disabled
+                @endif
+                @if($field_autofocus ?? false)
+                    autofocus
                 @endif
             />
             @break
