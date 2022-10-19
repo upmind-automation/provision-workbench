@@ -139,6 +139,12 @@
                 @if(isset($configuration))
                     <form class="ui form" method="GET" action="{{ route('provision-request-new') }}">
                         <input type="hidden" name="configuration_id" value="{{ $configuration->id }}"/>
+                        @if($request->has('provision_request_id'))
+                            <input type="hidden" name="provision_request_id" value="{{ $request->get('provision_request_id') }}"/>
+                        @endif
+                        @if($request->has('use_result_data'))
+                            <input type="hidden" name="use_result_data" value="{{ $request->get('use_result_data') }}"/>
+                        @endif
                         @component('components.html-field', [
                             'field_label' => 'Function',
                             'field_type' => HtmlField::TYPE_SELECT,

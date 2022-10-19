@@ -25,6 +25,16 @@ class ProvisionRequestNewController extends Controller
                 $provider = $provision_request->getProvider();
                 $configuration = $provision_request->configuration;
                 $function = $provision_request->getFunction();
+
+                if ($request->has('function_name')) {
+                    $function = $category->getFunction($request->get('function_name'));
+                }
+
+                $parameter_data = $provision_request->parameter_data;
+
+                if ($request->get('use_result_data')) {
+                    $parameter_data = array_merge($parameter_data, $provision_request->getResult()->getData() ?? []);
+                }
             }
         }
 
@@ -61,7 +71,7 @@ class ProvisionRequestNewController extends Controller
             'provider' => $provider,
             'function' => $function,
             'provision_request' => $provision_request ?? null,
-            'parameter_data' => $provision_request->parameter_data ?? [],
+            'parameter_data' => $parameter_data ?? [],
         ]);
     }
 }
