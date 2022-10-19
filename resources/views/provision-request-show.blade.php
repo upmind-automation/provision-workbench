@@ -90,8 +90,8 @@
                                         </span>
                                     </td>
                                 @endif
-                                <td class="@if(is_string($value) && !empty($value)) selectable @endif word-break-all">
-                                    @if(is_string($value) && !empty($value))
+                                <td class="@if((is_string($value) || is_numeric($value)) && !empty($value)) selectable @endif word-break-all">
+                                    @if((is_string($value) || is_numeric($value)) && !empty($value))
                                         @component('components.copy-text'){{ $value }}@endcomponent
                                     @else
                                         {{ json_encode($value) }}
