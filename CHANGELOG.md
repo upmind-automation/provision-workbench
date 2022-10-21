@@ -3,6 +3,15 @@
 All notable changes to the package will be documented in this file.
 
 
+## v1.1.0 - 2022-10-20
+
+- Update upmind/provision-provider-base to v3.4.0
+- Update guzzlehttp/guzzle to v7.5.0
+- Fix a crash related to uninstalled provision categories/providers
+- Add "Next Request" button when viewing a provision request which merges the
+  result data into the new request's parameter data form
+- Various UI/UX tweaks
+
 ## v1.0.7 - 2022-10-17
 
 - Update upmind/provision-provider-base to v3.1.1
