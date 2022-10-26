@@ -9,7 +9,9 @@
 
 @section('title', 'Provision Requests')
 
-@section('title-message', sprintf('%s results', $provision_requests->total()))
+@section('title-message')
+    <strong>{{ $provision_requests->total() }} results</strong>
+@endsection
 
 @section('icon')
     <i class="zoom-in icon"></i>
@@ -24,11 +26,11 @@
             <tr>
                 <th>Category</th>
                 <th>Provider</th>
-                <th>Configuration</th>
                 <th>Function</th>
+                <th>Configuration</th>
                 <th>Status</th>
                 <th>Execution Time</th>
-                <th>Updated</th>
+                <th>Executed</th>
                 <th></th>
             <tr>
             {{-- @if($filters)
@@ -47,7 +49,7 @@
                 <tr>
                     <td class="collapsing">
                         @component('components.filter', ['filter_param' => 'category_code', 'filter_value' => $provision_request->category_code])
-                            <a href="{{ route('category-show', ['category_code' => $provision_request->category_code]) }}">
+                            <a data-tooltip="View Category" style="color:black;" href="{{ route('category-show', ['category_code' => $provision_request->category_code]) }}">
                                 @if ($provision_request->getCategoryIcon()) <i class="{{ $provision_request->getCategoryIcon() }} icon"></i> @endif
                                 {{ $provision_request->getCategoryName() }}
                             </a>
@@ -55,22 +57,22 @@
                     </td>
                     <td class="collapsing">
                         @component('components.filter', ['filter_param' => 'provider_code', 'filter_value' => $provision_request->provider_code])
-                            <a href="{{ route('provider-show', ['category_code' => $provision_request->category_code, 'provider_code' => $provision_request->provider_code]) }}">
+                            <a data-tooltip="View Provider" style="color:black;" href="{{ route('provider-show', ['category_code' => $provision_request->category_code, 'provider_code' => $provision_request->provider_code]) }}">
                                 @if ($provision_request->getProviderIcon()) <i class="{{ $provision_request->getProviderIcon() }} icon"></i> @endif
                                 {{ $provision_request->getProviderName() }}
-                            </a>
-                        @endcomponent
-                    </td>
-                    <td>
-                        @component('components.filter', ['filter_param' => 'configuration_id', 'filter_value' => $provision_request->configuration_id])
-                            <a href="{{ route('provider-configuration-show', ['configuration' => $provision_request->configuration_id]) }}">
-                                {{ $provision_request->getConfigurationName() }}
                             </a>
                         @endcomponent
                     </td>
                     <td class="collapsing">
                         @component('components.filter', ['filter_param' => 'function_name', 'filter_value' => $provision_request->function_name])
                             {{ $provision_request->getFunctionName() }}()
+                        @endcomponent
+                    </td>
+                    <td>
+                        @component('components.filter', ['filter_param' => 'configuration_id', 'filter_value' => $provision_request->configuration_id])
+                            <a data-tooltip="View Configuration" style="color:black;" href="{{ route('provider-configuration-show', ['configuration' => $provision_request->configuration_id]) }}">
+                                {{ $provision_request->getConfigurationName() }}
+                            </a>
                         @endcomponent
                     </td>
                     <td class="collapsing center aligned">
