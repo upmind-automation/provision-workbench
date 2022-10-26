@@ -28,7 +28,7 @@
             'field_id' => 'configuration_name',
             'field_name' => 'name',
             'field_required' => true,
-            'field_value' => Request::input('name'),
+            'field_value' => Request::input('name') ?? $name,
             'field_errors' => $errors->getBag('default')->get('name'),
         ])
         @endcomponent
@@ -44,7 +44,7 @@
                     'field_attributes' => $html_field->attributes(),
                     'field_validation_rules' => $html_field->validationRules(),
                     'field_required' => $html_field->required(),
-                    'field_value' => Request::input('field_values.' . $html_field->name()),
+                    'field_value' => Request::input('field_values.' . $html_field->name()) ?? Arr::get($field_values, $html_field->name()),
                     'field_errors' => $errors->getBag('field_values')->get($html_field->name()),
                 ])
                 @endcomponent
