@@ -3,6 +3,12 @@
 All notable changes to the package will be documented in this file.
 
 
+## v1.2.0 - 2022-10-26
+
+- Add duplicate provider configuration button
+- Fix provision-request-show result_data_rules for nested datasets
+- UI tweaks
+
 ## v1.1.0 - 2022-10-20
 
 - Update upmind/provision-provider-base to v3.4.0
