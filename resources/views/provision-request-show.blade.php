@@ -197,27 +197,21 @@
                             Result Data
                         </div>
                         <div class="content active">
-                            @if($result_data)
-                                @component('components.json')@json($result_data, JSON_PRETTY_PRINT)@endcomponent
-                            @endif
+                            @component('components.json')@json($result_data, JSON_PRETTY_PRINT)@endcomponent
                         </div>
                         <div class="title @if(!$result_debug || (!$result_data && !$logs)) active @endif">
                             <i class="dropdown icon"></i>
                             Result Debug
                         </div>
                         <div class="content @if(!$result_debug || (!$result_data && !$logs)) active @endif">
-                            @if($result_debug)
-                                @component('components.json')@json($result_debug, JSON_PRETTY_PRINT)@endcomponent
-                            @endif
+                            @component('components.json')@json($result_debug, JSON_PRETTY_PRINT)@endcomponent
                         </div>
                         <div class="title active">
                             <i class="dropdown icon"></i>
                             Logs
                         </div>
                         <div class="content active">
-                            @if($logs)
-                                @component('components.json'){{ $logs }}@endcomponent
-                            @endif
+                            @component('components.json'){{ $logs ?: 'null' }}@endcomponent
                         </div>
                     </div>
                 </div>
