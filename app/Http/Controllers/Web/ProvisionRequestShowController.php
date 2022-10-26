@@ -31,6 +31,10 @@ class ProvisionRequestShowController extends Controller
                 $function->getReturn()->getRules()->expand()
             );
 
+            // Add expanded rules back to the validator due to nested data set validation
+            // being moved to nested validators and thus disappearing from Validator::getRules()
+            $resultDataValidator->addRules($function->getReturn()->getRules()->expand());
+
             $result_data_rules = $resultDataValidator->getRules();
         }
 
