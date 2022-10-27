@@ -86,6 +86,10 @@ class ProvisionRequestIndexController extends Controller
             return redirect($request->fullUrlWithQuery(['page' => 1]));
         }
 
+        $provision_requests->appends(array_filter($filters));
+        $provision_requests->appends(array_filter(['order' => $request->get('order')]));
+        $provision_requests->appends(array_filter(['direction' => $request->get('direction')]));
+
         return view('provision-request-index', [
             'request' => $request,
             'registry' => $registry,

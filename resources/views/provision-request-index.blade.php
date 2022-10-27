@@ -101,15 +101,7 @@
         <tfoot>
             <tr>
                 <th class="center aligned" colspan="8">
-                    @if($provision_requests->hasMorePages() || $provision_requests->currentPage() > 1)
-                        <div class="ui pagination menu">
-                            @foreach(range(1, $provision_requests->lastPage()) as $i)
-                                <a @if($i == $provision_requests->currentPage()) class="item active" @else class="item" href="{{ Request::fullUrlWithQuery(['page' => $i]) }}" @endif>
-                                    {{ $i }}
-                                </a>
-                            @endforeach
-                        </div>
-                    @endif
+                    {{ $provision_requests->links('components.pagination') }}
                 </th>
             </tr>
         </tfoot>
