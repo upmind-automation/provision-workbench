@@ -189,9 +189,16 @@
                 ])
                 @endcomponent
             @endif
-            @if($provision_request->hasResult())
-                <div class="ui basic padded segment">
-                    <div class="ui accordion">
+            <div class="ui basic padded segment">
+                <div class="ui accordion">
+                    <div class="title">
+                        <i class="dropdown icon"></i>
+                        Params
+                    </div>
+                    <div class="content">
+                        @component('components.json')@json($provision_request->parameter_data, JSON_PRETTY_PRINT)@endcomponent
+                    </div>
+                    @if($provision_request->hasResult())
                         <div class="title active">
                             <i class="dropdown icon"></i>
                             Result Data
@@ -213,9 +220,9 @@
                         <div class="content active">
                             @component('components.json'){{ $logs ?: 'null' }}@endcomponent
                         </div>
-                    </div>
+                    @endif
                 </div>
-            @endif
+            </div>
         </div>
         <div class="actions">
             <div class="ui black deny button">Close</div>
