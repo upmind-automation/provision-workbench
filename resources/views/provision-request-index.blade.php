@@ -77,7 +77,7 @@
                     </td>
                     <td class="collapsing center aligned">
                         @component('components.filter', ['filter_param' => 'result_status', 'filter_value' => $provision_request->result_status])
-                            <span @if($provision_request->result_message) data-tooltip="{{ $provision_request->result_message }}" @endif class="ui small @if($provision_request->isSuccess()) green @elseif($provision_request->isError()) red @endif label" style="min-width:4rem;">
+                            <span @if($provision_request->result_message) data-tooltip="{{ $provision_request->result_message }}" data-inverted @endif class="ui small @if($provision_request->isSuccess()) green @elseif($provision_request->isError()) red @endif label" style="min-width:4rem;">
                                 {{ ucfirst($provision_request->result_status ?? 'Pending') }}
                             </span>
                         @endcomponent
@@ -86,7 +86,7 @@
                         {{ round($provision_request->execution_time, 2) }} secs
                     </td>
                     <td class="collapsing">
-                        <span data-tooltip="{{ $provision_request->updated_at }}">{{ $provision_request->updated_at->diffForHumans() }}</span>
+                        <span data-tooltip="{{ $provision_request->updated_at }}" data-inverted>{{ $provision_request->updated_at->diffForHumans() }}</span>
                     </td>
                     <td class="collapsing">
                         <div class="ui tiny basic buttons">

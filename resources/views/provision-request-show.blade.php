@@ -13,7 +13,7 @@
 @section('title', sprintf('View %s() Result', $function->getName()))
 
 @section('title-message')
-    <span data-tooltip="{{ $provision_request->updated_at }}">
+    <span data-tooltip="{{ $provision_request->updated_at }}" data-inverted>
         <strong>Executed {{ $provision_request->updated_at->diffForHumans() }}</strong>
     </span>
 @endsection

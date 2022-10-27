@@ -15,7 +15,7 @@
 @endsection
 
 @section('title-message')
-    <span data-tooltip="{{ $configuration->updated_at }}">
+    <span data-tooltip="{{ $configuration->updated_at }}" data-inverted>
         <strong>Updated {{ $configuration->updated_at->diffForHumans() }}</strong>
     </span>
 @endsection
