@@ -33,7 +33,10 @@ class ProvisionRequestNewController extends Controller
                 $parameter_data = $provision_request->parameter_data;
 
                 if ($request->get('use_result_data')) {
-                    $parameter_data = array_merge($parameter_data, $provision_request->getResult()->getData() ?? []);
+                    $parameter_data = array_merge_recursive(
+                        $parameter_data,
+                        $provision_request->getResult()->getData() ?? []
+                    );
                 }
             }
         }
