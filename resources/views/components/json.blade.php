@@ -1,1 +1,1 @@
-@component('components.code', ['language' => 'json']){{ $slot }}@endcomponent
+@component('components.code', ['language' => 'json'])@if(array_key_exists('data', get_defined_vars())){{ is_string($data) ? $data : json_encode($data, JSON_PRETTY_PRINT) }}@endif{{ $slot }}@endcomponent

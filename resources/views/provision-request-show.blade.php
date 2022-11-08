@@ -217,7 +217,7 @@
                         Params
                     </div>
                     <div class="content">
-                        @component('components.json')@json($provision_request->parameter_data, JSON_PRETTY_PRINT)@endcomponent
+                        @component('components.json', ['data' => $provision_request->parameter_data])@endcomponent
                     </div>
                     @if($provision_request->hasResult())
                         <div class="title active">
@@ -225,21 +225,21 @@
                             Result Data
                         </div>
                         <div class="content active">
-                            @component('components.json')@json($result_data, JSON_PRETTY_PRINT)@endcomponent
+                            @component('components.json', ['data' => $result_data])@endcomponent
                         </div>
                         <div class="title @if(!$result_debug || (!$result_data && !$logs)) active @endif">
                             <i class="dropdown icon"></i>
                             Result Debug
                         </div>
                         <div class="content @if(!$result_debug || (!$result_data && !$logs)) active @endif">
-                            @component('components.json')@json($result_debug, JSON_PRETTY_PRINT)@endcomponent
+                            @component('components.json', ['data' => $result_debug])@endcomponent
                         </div>
                         <div class="title active">
                             <i class="dropdown icon"></i>
                             Logs
                         </div>
                         <div class="content active">
-                            @component('components.json'){{ $logs ?: 'null' }}@endcomponent
+                            @component('components.json', ['data' => $logs ?: null])@endcomponent
                         </div>
                     @endif
                 </div>
