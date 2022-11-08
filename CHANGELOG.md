@@ -2,6 +2,9 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.1 - 2022-11-08
+
+- Update "Next Request" parameter data to be recursive merge of params and result
 
 ## v1.3.0 - 2022-11-08
 
