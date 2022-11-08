@@ -94,7 +94,7 @@
                                     @if((is_string($value) || is_numeric($value)) && !empty($value))
                                         @component('components.copy-text'){{ $value }}@endcomponent
                                     @else
-                                        {{ json_encode($value) }}
+                                        <em>{{ json_encode($value) }}</em>
                                     @endif
                                 </td>
                             </tr>
