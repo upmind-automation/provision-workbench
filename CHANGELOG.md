@@ -2,6 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.2 - TBC
+
+- Fix html-escaping of provision result params/data/debug/logs accordian panels
+
 ## v1.3.1 - 2022-11-08
 
 - Update "Next Request" parameter data to be recursive merge of params and result
