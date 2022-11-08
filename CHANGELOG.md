@@ -3,6 +3,15 @@
 All notable changes to the package will be documented in this file.
 
 
+## v1.3.0 - 2022-11-08
+
+- Require upmind/provision-provider-base ^3.5
+- Add stderr to logging stack
+- Add new form components
+- Update provision-request-new and provision-request-show views to use new form
+  components
+- Minor UI improvements
+
 ## v1.2.0 - 2022-10-26
 
 - Add duplicate provider configuration button
