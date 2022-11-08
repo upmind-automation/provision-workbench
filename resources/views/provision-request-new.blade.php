@@ -176,7 +176,7 @@
                     </form>
                     {{-- PARAMETERS --}}
                     @if(isset($function))
-                        <form class="ui form" method="POST" action="{{ route('provision-request-store') }}">
+                        {{-- <form class="ui form" method="POST" action="{{ route('provision-request-store') }}">
                             @csrf
                             <input type="hidden" name="configuration_id" value="{{ $configuration->id }}"/>
                             <input type="hidden" name="function_name" value="{{ $function->getName() }}"/>
@@ -202,7 +202,26 @@
                             <div class="ui field">
                                 <button class="ui primary button right labeled icon button" type="submit">Execute <i class="play circle icon"></i></button>
                             </div>
-                        </form>
+                        </form> --}}
+                        <div class="ui secondary segment grouped fields">
+                            <h3 class="ui dividing header">Parameters</h3>
+                            @component('components.form', [
+                                'form' => $function->getParameter()->getRules()->toHtmlForm(),
+                                'method' => 'POST',
+                                'action' => route('provision-request-store'),
+                                'id' => 'parameter_data',
+                                'name_pattern' => 'parameter_data[%s]',
+                                'hidden_values' => [
+                                    'configuration_id' => $configuration->id,
+                                    'function_name' => $function->getName(),
+                                ],
+                                'values' => $parameter_data,
+                            ])
+                            @endcomponent
+                        </div>
+                        <div class="ui field">
+                            <button form="parameter_data" class="ui primary button right labeled icon button" type="submit">Execute <i class="play circle icon"></i></button>
+                        </div>
                     @endif
                 @endif
             @endif

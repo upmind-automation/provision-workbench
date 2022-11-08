@@ -101,6 +101,14 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{-- @component('components.form', [
+                    'form' => $function->getReturn()->getRules()->toHtmlForm(),
+                    'id' => 'result_data',
+                    'name_pattern' => 'result_data[%s]',
+                    'values' => $result_data,
+                    'disabled' => true,
+                ])
+                @endcomponent --}}
             @endif
         @endif
         <h2 class="ui dividing header">
@@ -135,7 +143,7 @@
                     <input type="text" value="{{ $provision_request->getFunctionName() }}()" disabled>
                 </div>
             @endcomponent
-            <div class="ui secondary segment grouped fields">
+            {{-- <div class="ui secondary segment grouped fields">
                 <h3 class="ui dividing header">Parameters</h3>
                 @foreach($function->getParameter()->getRules()->toHtmlFields() as $html_field)
                     @component('components.html-field', [
@@ -153,6 +161,19 @@
                     ])
                     @endcomponent
                 @endforeach
+            </div> --}}
+            <div class="ui secondary segment grouped fields">
+                <h3 class="ui dividing header">Parameters</h3>
+                @component('components.form', [
+                    'form' => $function->getParameter()->getRules()->toHtmlForm(),
+                    'method' => 'POST',
+                    'action' => route('provision-request-store'),
+                    'id' => 'parameter_data',
+                    'name_pattern' => 'parameter_data[%s]',
+                    'values' => $provision_request->parameter_data,
+                    'disabled' => true,
+                ])
+                @endcomponent
             </div>
         </form>
     </div>
