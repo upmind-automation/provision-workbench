@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e9704af9a1e6e17eacdae84b27f401e",
+    "content-hash": "2c903d3465eac32c0a159d0721957edd",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -6084,16 +6084,16 @@
         },
         {
             "name": "upmind/provision-provider-base",
-            "version": "v3.4.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/upmind-automation/provision-provider-base.git",
-                "reference": "635132a7d3cfbf7bb15eecaf37da6e5cdbd7188d"
+                "reference": "3751d2fc17c9c01a2ab1b7e4733e946cd9f1bb51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/upmind-automation/provision-provider-base/zipball/635132a7d3cfbf7bb15eecaf37da6e5cdbd7188d",
-                "reference": "635132a7d3cfbf7bb15eecaf37da6e5cdbd7188d",
+                "url": "https://api.github.com/repos/upmind-automation/provision-provider-base/zipball/3751d2fc17c9c01a2ab1b7e4733e946cd9f1bb51",
+                "reference": "3751d2fc17c9c01a2ab1b7e4733e946cd9f1bb51",
                 "shasum": ""
             },
             "require": {
@@ -6133,9 +6133,9 @@
             "description": "This library contains all the base interfaces, classes and logic to create provision category and provider classes, and register them for use in a laravel application.",
             "support": {
                 "issues": "https://github.com/upmind-automation/provision-provider-base/issues",
-                "source": "https://github.com/upmind-automation/provision-provider-base/tree/v3.4.0"
+                "source": "https://github.com/upmind-automation/provision-provider-base/tree/v3.5.0"
             },
-            "time": "2022-10-21T10:41:28+00:00"
+            "time": "2022-11-08T00:57:06+00:00"
         },
         {
             "name": "upmind/provision-provider-hello-world",
@@ -8602,5 +8602,5 @@
         "php": "^7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
