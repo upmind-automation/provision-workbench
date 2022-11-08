@@ -46,3 +46,21 @@ function showCopyToolTip(element) {
             return false;
         });
 }
+
+function addFormField(fieldId) {
+    var template = document.getElementById("template-" + fieldId);
+    var copy = template.cloneNode(true);
+    copy.innerHTML = copy.innerHTML.replaceAll(
+        "**i**",
+        window.formFieldIncrements[fieldId]
+    );
+
+    template.parentNode.insertBefore(copy.content, template);
+    window.formFieldIncrements[fieldId]++;
+}
+
+function revealFormField(templateId) {
+    var template = document.getElementById(templateId);
+    template.parentNode.insertBefore(template.content, template);
+    template.remove();
+}
