@@ -35,7 +35,9 @@ class ProvisionRequestShowController extends Controller
             // being moved to nested validators and thus disappearing from Validator::getRules()
             $resultDataValidator->addRules($function->getReturn()->getRules()->expand());
 
-            $result_data_rules = $resultDataValidator->getRules();
+            $result_data_rules = array_map(function ($rules) {
+                return array_values(array_unique($rules));
+            }, $resultDataValidator->getRules());
         }
 
         return view('provision-request-show', [
