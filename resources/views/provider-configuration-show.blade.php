@@ -53,18 +53,18 @@
         @endcomponent
         <div class="ui secondary segment grouped fields">
             <h3 class="ui header dividing">Data</h3>
-            @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlFields() as $html_field)
+            @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $form_field)
                 @component('components.html-field', [
-                    'field_label' => $html_field->name(),
-                    'field_type' => $html_field->type(),
-                    'field_id' => 'field_values_' . $html_field->name(),
-                    'field_name' => 'field_values[' . $html_field->name() . ']',
-                    'field_options' => $html_field->options(),
-                    'field_attributes' => $html_field->attributes(),
-                    'field_validation_rules' => $html_field->validationRules(),
-                    'field_required' => $html_field->required(),
-                    'field_value' => Request::input('field_values.' . $html_field->name()) ?? $configuration->data[$html_field->name()] ?? null,
-                    'field_errors' => $errors->getBag('field_values')->get($html_field->name()),
+                    'field_label' => $form_field->name(),
+                    'field_type' => $form_field->type(),
+                    'field_id' => 'field_values_' . $form_field->name(),
+                    'field_name' => 'field_values[' . $form_field->name() . ']',
+                    'field_options' => $form_field->options(),
+                    'field_attributes' => $form_field->attributes(),
+                    'field_validation_rules' => $form_field->validationRules(),
+                    'field_required' => $form_field->required(),
+                    'field_value' => Request::input('field_values.' . $form_field->name()) ?? $configuration->data[$form_field->name()] ?? null,
+                    'field_errors' => $errors->getBag('field_values')->get($form_field->name()),
                 ])
                 @endcomponent
             @endforeach
