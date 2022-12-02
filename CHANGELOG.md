@@ -2,6 +2,11 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.3 - 2022-12-02
+
+- Fix provider configuration update in cases where configuration data is multi-assoc
+  or doesn't accept null values
+
 ## v1.3.2 - 2022-11-09
 
 - Fix html-escaping of provision result params/data/debug/logs accordion panels
