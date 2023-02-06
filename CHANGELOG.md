@@ -2,6 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.4 - 2023-02-06
+
+- Fix a crash in provision-request-show caused by extraneous return data properties
+
 ## v1.3.3 - 2022-12-02
 
 - Fix provider configuration update in cases where configuration data is multi-assoc
