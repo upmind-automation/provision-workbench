@@ -5,7 +5,7 @@
 
     $group_id = sprintf($name_pattern, $group->name());
     $disabled = $disabled ?? false;
-    $has_values = boolval(array_filter($values ?? []));
+    $has_values = is_array($values ?? null) && !empty(array_filter($values));
 
     $is_in_required_group = true;
     $parent = $group->group();
