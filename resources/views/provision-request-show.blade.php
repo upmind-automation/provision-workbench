@@ -74,7 +74,7 @@
                     <tbody>
                         @foreach(Arr::dot($result_data) as $prop => $value)
                             <tr>
-                                @if(Arr::has($result_data_rules, $prop))
+                                @if(is_array(Arr::get($result_data_rules, $prop)))
                                     <td class="collapsing">
                                         {{ $prop }}
                                         <span class="ui inline icon" data-tooltip="{{ implode(' | ', Arr::get($result_data_rules, $prop)) }}" data-inverted>
