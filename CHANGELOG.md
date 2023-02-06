@@ -2,9 +2,13 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.5 - 2023-02-06
+
+- Fix a crash in form-group view component when a non-array value is passed
+
 ## v1.3.4 - 2023-02-06
 
-- Fix a crash in provision-request-show caused by extraneous return data properties
+- Fix a crash in provision-request-show view caused by extraneous return data properties
 
 ## v1.3.3 - 2022-12-02
 
