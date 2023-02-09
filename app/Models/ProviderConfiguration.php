@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Encryption;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
@@ -35,9 +36,7 @@ use Upmind\ProvisionBase\Registry\Registry;
  */
 class ProviderConfiguration extends Model
 {
-    protected $casts = [
-        'data' => 'json',
-    ];
+    use Encryption;
 
     /**
      * @param Builder $query
@@ -81,5 +80,15 @@ class ProviderConfiguration extends Model
         }
 
         return $category->getProvider($this->provider_code);
+    }
+
+    public function getDataAttribute($value): ?array
+    {
+        return $this->decrypt($this->fromJson($value));
+    }
+
+    public function setDataAttribute($data): void
+    {
+        $this->attributes['data'] = $this->castAttributeAsJson('data', $this->encrypt($data));
     }
 }

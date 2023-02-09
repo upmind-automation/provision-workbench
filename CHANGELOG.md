@@ -2,6 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.6 - 2023-02-09
+
+- Add backwards-compatible encryption to provider configuration data
+
 ## v1.3.5 - 2023-02-06
 
 - Fix a crash in form-group view component when a non-array value is passed
