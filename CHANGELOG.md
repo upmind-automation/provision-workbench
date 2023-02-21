@@ -2,6 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
+## v1.3.8 - 2023-02-21
+
+- Add retry button to provision-request-show view
+
 ## v1.3.7 - 2023-02-13
 
 - Update provision-request-show view, display 'Next Request' button regardless of
