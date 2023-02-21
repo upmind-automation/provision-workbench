@@ -29,5 +29,6 @@ Route::get('/provision_requests', ProvisionRequestIndexController::class)->name(
 Route::post('/provision_requests/new', ProvisionRequestNewController::class)->name('provision-request-new');
 Route::get('/provision_requests/new', ProvisionRequestNewController::class)->name('provision-request-new');
 Route::post('/provision_requests', ProvisionRequestStoreController::class)->name('provision-request-store');
+Route::get('/provision_requests/{provision_request}/retry/{_token}', ProvisionRequestRetryController::class)->name('provision-request-retry');
 Route::get('/provision_requests/{provision_request}', ProvisionRequestShowController::class)->name('provision-request-show');
 Route::delete('/provision_requests/{provision_request}', ProvisionRequestDestroyController::class)->name('provision-request-destroy');
