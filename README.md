@@ -49,8 +49,7 @@ php artisan serve
 Clone git repository:
 
 ```bash
-git clone https://github.com/upmind-automation/provision-workbench.git provision-workbench \
-  && cd provision-workbench
+git clone https://github.com/upmind-automation/provision-workbench.git && cd provision-workbench
 
 ```
 
