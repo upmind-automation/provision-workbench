@@ -6,7 +6,9 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 - [Requirements](#requirements)
 - [Installation](#installation)
-  - [Quick-start](#quick-start)
+  - [Locally](#install-locally)
+  - [Using Docker](#using-docker)
+- [Quick-start](#quick-start)
 - [Usage](#usage)
   - [Screenshots](#screenshots)
 - [Changelog](#changelog)
@@ -17,24 +19,61 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 ## Requirements
 
-- PHP 7.4 or higher
+- PHP ^7.4
 - Composer
 
 ## Installation
 
 **This project is intended to be used as a local development tool only and should NOT be hosted on the internet**
 
+### Install Locally
+
+- Requires PHP 7.4 and composer
+
+Create project:
+
 ```bash
 composer create-project upmind/provision-workbench --keep-vcs
 ```
 
-### Quick-start
-
-Run the application:
+Run application:
 
 ```bash
 php artisan serve
 ```
+
+### Using Docker
+
+- Requires git and docker
+
+Clone git repository:
+
+```bash
+git clone https://github.com/upmind-automation/provision-workbench.git provision-workbench \
+  && cd provision-workbench
+
+```
+
+Build image (may take a few minutes):
+
+```bash
+docker build -t provision-workbench .
+```
+
+Run container:
+
+```bash
+docker run --rm -it -v $(pwd):/provision-workbench -p 8000:80 provision-workbench
+```
+
+You'll then be able to access the workbench in a web browser at http://127.0.0.1:8000.
+
+Connect to container (for artisan, composer etc):
+```bash
+docker exec -it $(docker container ls  | grep 'provision-workbench' | awk '{print $1}') /bin/bash
+```
+
+## Quick-start
 
 Install a provision category + providers e.g., shared-hosting:
 
@@ -46,6 +85,14 @@ Refresh provision registry (e.g., after adding a new provider or updating data s
 
 ```bash
 php artisan upmind:provision:cache
+```
+
+Install a package locally:
+
+```bash
+git clone https://github.com/upmind-automation/provision-provider-domain-names.git local/domain-names \
+  && composer require upmind/provision-provider-domain-names:@dev
+
 ```
 
 ## Usage
