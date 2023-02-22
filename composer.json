@@ -29,14 +29,14 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../*",
+            "url": "local/*",
             "options": {
-                "symlink": true
+                "symlink": false
             }
         }
     ],
     "config": {
-        "optimize-autoloader": true,
+        "optimize-autoloader": false,
         "sort-packages": true,
         "preferred-install": {
             "upmind/*": "source",
