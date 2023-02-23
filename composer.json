@@ -31,7 +31,7 @@
             "type": "path",
             "url": "local/*",
             "options": {
-                "symlink": false
+                "symlink": true
             }
         }
     ],
