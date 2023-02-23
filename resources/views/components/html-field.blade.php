@@ -33,6 +33,9 @@
                 @foreach ($field_attributes ?? [] as $attribute => $value)
                     {{ $attribute }}="{{ $value }}"
                 @endforeach
+                @if($field_styles ?? [])
+                    style="{{ implode(';', $field_styles) }}"
+                @endif
                 @if ($field_required ?? false)
                     required
                 @endif
@@ -45,7 +48,7 @@
                 @if($field_autofocus ?? false)
                     autofocus
                 @endif
-            >{{ $field_value }}</textarea>
+            >{{ trim($field_value ?? '') }}</textarea>
             @break
         @case(HtmlField::TYPE_CHECKBOX)
             <div class="ui @if ($field_read_only ?? false) read-only @endif fitted checkbox">
@@ -58,6 +61,9 @@
                     @foreach ($field_attributes ?? [] as $attribute => $value)
                         {{ $attribute }}="{{ $value }}"
                     @endforeach
+                    @if($field_styles ?? [])
+                        style="{{ implode(';', $field_styles) }}"
+                    @endif
                     value="1"
                     @if($field_value)
                         checked
@@ -92,6 +98,9 @@
                         @foreach ($field_attributes ?? [] as $attribute => $value)
                             {{ $attribute }}="{{ $value }}"
                         @endforeach
+                        @if($field_styles ?? [])
+                            style="{{ implode(';', $field_styles) }}"
+                        @endif
                         value="{{ $option->value }}"
                         @if((string)$field_value === (string)$option->value)
                             selected
@@ -121,6 +130,9 @@
                 @foreach ($field_attributes ?? [] as $attribute => $value)
                     {{ $attribute }}="{{ $value }}"
                 @endforeach
+                @if($field_styles ?? [])
+                    style="{{ implode(';', $field_styles) }}"
+                @endif
                 @if ($field_required ?? false)
                     required
                 @endif
@@ -168,6 +180,9 @@
                     @foreach ($field_attributes ?? [] as $attribute => $value)
                         {{ $attribute }}="{{ $value }}"
                     @endforeach
+                    @if($field_styles ?? [])
+                        style="{{ implode(';', $field_styles) }}"
+                    @endif
                     value="{{ $field_value }}"
                     @if ($field_required ?? false)
                         required
@@ -212,6 +227,9 @@
                 @foreach ($field_attributes ?? [] as $attribute => $value)
                     {{ $attribute }}="{{ $value }}"
                 @endforeach
+                @if($field_styles ?? [])
+                    style="{{ implode(';', $field_styles) }}"
+                @endif
                 value="{{ $field_value }}"
                 @if ($field_required ?? false)
                     required
