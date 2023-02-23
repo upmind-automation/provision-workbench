@@ -7,7 +7,7 @@ All notable changes to the package will be documented in this file.
 Breaking:
 - Change local composer.json repository directory path from `../*` to `local/*`
 
-New/Fixed/Updated
+New/Fixed/Updated:
 - Update `upmind/provision-provider-base` to v3.5.2
 - Add Dockerfile and container start scripts
 - Fix message view component label icon
