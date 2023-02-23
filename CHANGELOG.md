@@ -2,6 +2,17 @@
 
 All notable changes to the package will be documented in this file.
 
+## v2.0.0 - 2023-02-23
+
+Breaking:
+- Change local composer.json repository directory path from `../*` to `local/*`
+
+New/Fixed/Updated
+- Update `upmind/provision-provider-base` to v3.5.2
+- Add Dockerfile and container start scripts
+- Fix message view component label icon
+- Add json input toggle to provision-request-new view
+
 ## v1.3.8 - 2023-02-21
 
 - Add retry button to provision-request-show view
