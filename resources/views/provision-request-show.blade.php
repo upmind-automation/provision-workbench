@@ -12,7 +12,7 @@
 
 @extends('layouts.main')
 
-@section('title', sprintf('View %s() Result', $function->getName()))
+@section('title', sprintf('#%s View %s() Result', $provision_request->id, $function->getName()))
 
 @section('title-message')
     <span data-tooltip="{{ $provision_request->updated_at }}" data-inverted>
