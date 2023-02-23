@@ -75,7 +75,7 @@ class ProvisionRequestNewController extends Controller
             'function' => $function,
             'provision_request' => $provision_request ?? null,
             'parameter_data' => $parameter_data ?? [],
-            'parameter_json' => $parameter_data ? json_encode($parameter_data, JSON_PRETTY_PRINT) : '',
+            'parameter_json' => isset($parameter_data) ? json_encode($parameter_data, JSON_PRETTY_PRINT) : '',
         ]);
     }
 }
