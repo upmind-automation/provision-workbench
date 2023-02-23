@@ -23,6 +23,19 @@
     </div>
     <table class="ui striped selectable table">
         <thead>
+            @if($filters)
+                <tr>
+                    <td colspan="8" style="border-bottom: 1px solid rgba(34,36,38,.1);">
+                        <strong><large>Filters:</large></strong>
+                        @foreach($filters as $key => $filter)
+                            <a class="ui label blue" href="{{ Request::fullUrlWithQuery([$key => '']) }}" data-tooltip="Remove filter">
+                                {{ $filter_labels[$key] }}: {{ Request::input($key) }}
+                                <i class="delete icon"></i>
+                            </a>
+                        @endforeach
+                    </td>
+                </tr>
+            @endif
             <tr>
                 <th>Category</th>
                 <th>Provider</th>
@@ -33,11 +46,6 @@
                 <th>Executed</th>
                 <th></th>
             <tr>
-            {{-- @if($filters)
-                <tr>
-                    <th colspan="7">@json($filters)</th>
-                </tr>
-            @endif --}}
         </thead>
         <tbody>
             @if($provision_requests->isEmpty())
@@ -126,7 +134,6 @@
     <script>
         @foreach($provision_requests as $provision_request)
             $('#provision-request-delete-modal-{{ $provision_request->id }}').modal('attach events', '#provision-request-delete-button-{{ $provision_request->id }}', 'show');
-
         @endforeach
     </script>
 @endsection

@@ -33,19 +33,24 @@ class ProvisionRequestIndexController extends Controller
             'updated_at',
         ];
 
-        $filters = collect($request->all([
-            'category_code',
-            'provider_code',
-            'configuration_id',
-            'function_name',
-            'result_status',
-        ]))->filter()->map(function ($filter) {
-            if ($filter === 'null') {
-                return null;
-            }
+        $filterLabels = [
+            'category_code' => 'Category',
+            'provider_code' => 'Provider',
+            'function_name' => 'Function',
+            'configuration_id' => 'Configuration',
+            'result_status' => 'Status',
+        ];
 
-            return $filter;
-        })->all();
+        $filters = collect($request->all(array_keys($filterLabels)))
+            ->filter()
+            ->map(function ($filter) {
+                if ($filter === 'null') {
+                    return null;
+                }
+
+                return $filter;
+            })
+            ->all();
 
         $order = in_array($request->get('order'), $columns)
             ? $request->get('order')
@@ -99,6 +104,7 @@ class ProvisionRequestIndexController extends Controller
             'configuration' => $configuration,
             'provision_requests' => $provision_requests,
             'filters' => $filters,
+            'filter_labels' => $filterLabels,
             'order' => $order,
             'direction' => $direction,
         ]);
