@@ -12,6 +12,9 @@ New/Fixed/Updated:
 - Add Dockerfile and container start scripts
 - Fix message view component label icon
 - Add json input toggle to provision-request-new view
+- Only show first 10 result data rows by default in provision-request-show
+- Improve filters in provision-request-index
+- Other minor UI tweaks/fixes
 
 ## v1.3.8 - 2023-02-21
 
