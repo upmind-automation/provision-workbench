@@ -29,7 +29,9 @@ class ProvisionRequestStoreController extends Controller
             ]);
         }
 
-        $parameters = $this->undot($request->get('parameter_data', []));
+        $parameters = $request->get('parameter_json')
+            ? (json_decode($request->get('parameter_json'), true) ?? [])
+            : $this->undot($request->get('parameter_data', []));
 
         $service = new ProvisionRequestService();
         $provisionRequest = $service->create($function, $configuration, $parameters);

@@ -203,8 +203,38 @@
                                 <button class="ui primary button right labeled icon button" type="submit">Execute <i class="play circle icon"></i></button>
                             </div>
                         </form> --}}
-                        <div class="ui secondary segment grouped fields">
+                        <div id="parameter-json-container" class="ui secondary segment grouped fields" style="display:none;">
                             <h3 class="ui dividing header">Parameters</h3>
+                            <span class="ui top right attached label purple cursor-pointer" onclick="toggleForm('form')">
+                                <i class="icon i cursor"></i> Form
+                            </span>
+                            <form class="ui form" id="parameter_raw" method="POST" action="{{ route('provision-request-store') }}">
+                                @csrf
+                                <input type="hidden" name="configuration_id" value="{{ $configuration->id }}"/>
+                                <input type="hidden" name="function_name" value="{{ $function->getName() }}"/>
+                                @component('components.html-field', [
+                                    'field_label' => 'JSON',
+                                    'field_type' => HtmlField::TYPE_TEXTAREA,
+                                    'field_id' => 'parameter_json',
+                                    'field_name' => 'parameter_json',
+                                    'field_required' => true,
+                                    'field_styles' => ['font-family:monospace', 'color:#800'],
+                                    'field_attributes' => [
+                                        'rows' => min(max(5, substr_count($parameter_json, "\n") + 1), 30),
+                                        'spellcheck' => 'false',
+                                        'placeholder' => "{\n    \"foo\": \"bar\"\n}",
+                                    ],
+                                    'field_value' => Request::input('parameter_json') ?? $parameter_json,
+                                    'field_errors' => $errors->getBag('default')->get('parameter_json'),
+                                ])
+                                @endcomponent
+                            </form>
+                        </div>
+                        <div id="parameter-form-container" class="ui secondary segment grouped fields">
+                            <h3 class="ui dividing header">Parameters</h3>
+                            <span class="ui top right attached label purple cursor-pointer" onclick="toggleForm('json')">
+                                <i class="icon code"></i> JSON
+                            </span>
                             @component('components.form', [
                                 'form' => $function->getParameter()->getRules()->toHtmlForm(),
                                 'method' => 'POST',
@@ -220,7 +250,8 @@
                             @endcomponent
                         </div>
                         <div class="ui field">
-                            <button form="parameter_data" class="ui primary button right labeled icon button" type="submit">Execute <i class="play circle icon"></i></button>
+                            <button id="parameter-form-submit" form="parameter_data" class="ui primary button right labeled icon button" type="submit">Execute <i class="play circle icon"></i></button>
+                            <button id="parameter-json-submit" form="parameter_raw" class="ui primary button right labeled icon button" type="submit" style="display:none;">Execute <i class="play circle icon"></i></button>
                         </div>
                     @endif
                 @endif
@@ -236,4 +267,24 @@
         //         },
         //     });
     </script>
+    <script>
+        function toggleForm(form) {
+            if (form === 'json') {
+                $('#parameter-json-container').show();
+                $('#parameter-json-submit').show();
+                $('#parameter-form-container').hide();
+                $('#parameter-form-submit').hide();
+            } else {
+                $('#parameter-json-container').hide();
+                $('#parameter-json-submit').hide();
+                $('#parameter-form-container').show();
+                $('#parameter-form-submit').show();
+            }
+        }
+
+        @if(Request::input('json'))
+            toggleForm('json');
+        @endif
+    </script>
+
 @endsection
