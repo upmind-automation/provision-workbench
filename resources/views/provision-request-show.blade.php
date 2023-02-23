@@ -6,6 +6,8 @@
     use Upmind\ProvisionBase\Registry\Data\FunctionRegister;
     use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Registry $registry */
+
+    $result_data_collapsed = Arr::dot($result_data);
 @endphp
 
 @extends('layouts.main')
@@ -71,8 +73,8 @@
                         </tr>
                     </thead> --}}
                     <tbody>
-                        @foreach(Arr::dot($result_data) as $prop => $value)
-                            <tr>
+                        @foreach($result_data_collapsed as $prop => $value)
+                            <tr @if($loop->iteration > 10) class="results-hidden" style="display:none;" @endif>
                                 @if(is_array(Arr::get($result_data_rules, $prop)))
                                     <td class="collapsing">
                                         {{ $prop }}
@@ -98,6 +100,15 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if(count($result_data_collapsed) > 10)
+                            <tr id="results-show-more">
+                                <td colspan="2" style="padding:0.5rem;" class="collapsing center aligned selectable cursor-pointer" onclick="$('.results-hidden').show(); $('#results-show-more').hide();">
+                                    <i class="down arrow icon"></i>
+                                    Show {{ count($result_data_collapsed) - 10 }} more rows
+                                    <i class="down arrow icon"></i>
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
                 {{-- @component('components.form', [
