@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "404be12e5786dbe4ca5e649a6e922143",
+    "content-hash": "5253113729c7aeb9f47cf324e8f41871",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -6084,16 +6084,16 @@
         },
         {
             "name": "upmind/provision-provider-base",
-            "version": "v3.5.2",
+            "version": "v3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/upmind-automation/provision-provider-base.git",
-                "reference": "b5bb77d489415019d77b0858eba76d94409fe82e"
+                "reference": "5f029e052143322780bb2471f45f28da6bd488bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/upmind-automation/provision-provider-base/zipball/b5bb77d489415019d77b0858eba76d94409fe82e",
-                "reference": "b5bb77d489415019d77b0858eba76d94409fe82e",
+                "url": "https://api.github.com/repos/upmind-automation/provision-provider-base/zipball/5f029e052143322780bb2471f45f28da6bd488bd",
+                "reference": "5f029e052143322780bb2471f45f28da6bd488bd",
                 "shasum": ""
             },
             "require": {
@@ -6133,9 +6133,9 @@
             "description": "This library contains all the base interfaces, classes and logic to create provision category and provider classes, and register them for use in a laravel application.",
             "support": {
                 "issues": "https://github.com/upmind-automation/provision-provider-base/issues",
-                "source": "https://github.com/upmind-automation/provision-provider-base/tree/v3.5.2"
+                "source": "https://github.com/upmind-automation/provision-provider-base/tree/v3.6.1"
             },
-            "time": "2022-11-09T15:23:17+00:00"
+            "time": "2023-02-24T20:34:39+00:00"
         },
         {
             "name": "upmind/provision-provider-hello-world",
