@@ -2,6 +2,13 @@
 
 All notable changes to the package will be documented in this file.
 
+## v2.1.0 - 2023-04-05
+
+- Disable TrimStrings middleware
+- Remove fakerphp/faker dev dependency
+- Update upmind/provision-provider-base to v3.7.0
+- Add ProviderFactoryServiceProvider with .env var to specify SystemInfo `outgoing_ips`
+
 ## v2.0.0 - 2023-02-23
 
 Breaking:
