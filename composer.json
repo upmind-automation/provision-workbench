@@ -16,7 +16,7 @@
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
-        "upmind/provision-provider-base": "^3.6",
+        "upmind/provision-provider-base": "^3.7",
         "upmind/provision-provider-hello-world": "^1.0"
     },
     "require-dev": {
