@@ -174,7 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\ProviderFactoryServiceProvider::class,
     ],
 
     /*
@@ -227,5 +227,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+    /**
+     * Application Config Settings
+     */
+    'outgoing_ips' => env('OUTGOING_IPS'),
 
 ];
