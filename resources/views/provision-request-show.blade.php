@@ -60,6 +60,9 @@
                 'message_colour' => 'secondary',
                 'message_icon' => 'notched circle loading',
                 'message_header' => 'Pending',
+                'message_cursor' => 'pointer',
+                'message_id' => 'provision-result-message',
+                'message_tooltip' => 'View details',
             ])
             @endcomponent
         @endif
@@ -244,14 +247,14 @@
                         <div class="content @if(!$result_debug || (!$result_data && !$logs)) active @endif">
                             @component('components.json', ['data' => $result_debug])@endcomponent
                         </div>
-                        <div class="title active">
-                            <i class="dropdown icon"></i>
-                            Logs
-                        </div>
-                        <div class="content active">
-                            @component('components.json', ['data' => $logs ?: null])@endcomponent
-                        </div>
                     @endif
+                    <div class="title active">
+                        <i class="dropdown icon"></i>
+                        Logs
+                    </div>
+                    <div class="content active">
+                        @component('components.json', ['data' => $logs ?: null])@endcomponent
+                    </div>
                 </div>
             </div>
         </div>
