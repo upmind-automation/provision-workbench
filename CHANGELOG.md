@@ -2,6 +2,11 @@
 
 All notable changes to the package will be documented in this file.
 
+## TBC
+
+- Allow opening of results modal for pending provision requests
+- CSS tweaks
+
 ## v2.1.0 - 2023-04-05
 
 - Disable TrimStrings middleware
