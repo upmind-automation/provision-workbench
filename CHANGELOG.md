@@ -2,9 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
-## TBC
+## v2.1.1 - 2023-06-01
 
 - Allow opening of results modal for pending provision requests
+- Improve UI performance when rending large provision request logs
 - CSS tweaks
 
 ## v2.1.0 - 2023-04-05
