@@ -253,7 +253,8 @@
                         Logs
                     </div>
                     <div class="content active">
-                        @component('components.json', ['data' => $logs ?: null])@endcomponent
+                        {{-- @component('components.json', ['data' => $logs ?: null])@endcomponent --}}
+                        @component('components.code', ['language' => 'text']){{ $logs }}@endcomponent
                     </div>
                 </div>
             </div>
