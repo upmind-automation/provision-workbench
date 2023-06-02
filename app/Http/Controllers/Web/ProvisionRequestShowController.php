@@ -40,6 +40,13 @@ class ProvisionRequestShowController extends Controller
             }, $resultDataValidator->getRules());
         }
 
+        $previousId = ProvisionRequest::where('id', '<', $provision_request->id)
+            ->orderBy('id', 'desc')
+            ->value('id');
+        $nextId = ProvisionRequest::where('id', '>', $provision_request->id)
+            ->orderBy('id', 'asc')
+            ->value('id');
+
         return view('provision-request-show', [
             'request' => $request,
             'registry' => $registry,
@@ -52,6 +59,8 @@ class ProvisionRequestShowController extends Controller
             'result_data' => $result_data ?? [],
             'result_debug' => $result_debug ?? [],
             'logs' => (new ProvisionRequestService())->getLogs($provision_request),
+            'previous_id' => $previousId,
+            'next_id' => $nextId,
         ]);
     }
 }
