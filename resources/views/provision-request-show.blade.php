@@ -23,10 +23,10 @@
 @section('content')
     <div class="provision-request-show">
         <div class="ui basic buttons">
-            <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id, 'function_name' => '', 'use_result_data' => $provision_request->isSuccess()]) }}">Next Request <i class="blue play circle icon"></i></a>
-            <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id, 'function_name' => $provision_request->function_name, 'use_result_data' => false]) }}">Duplicate <i class="primary copy icon"></i></a>
-            <a class="ui icon button" href="{{ route('provision-request-index', ['configuration_id' => $provision_request->configuration_id, 'function_name' => $provision_request->function_name]) }}">Related Requests <i class="zoom-in icon"></i></a>
+            <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id, 'function_name' => '', 'use_result_data' => $provision_request->isSuccess()]) }}">Next Function <i class="blue play circle icon"></i></a>
+            <a class="ui icon button" href="{{ route('provision-request-new', ['provision_request_id' => $provision_request->id, 'function_name' => $provision_request->function_name, 'use_result_data' => false]) }}">Copy <i class="primary copy icon"></i></a>
             <a class="ui icon button" href="{{ route('provision-request-retry', ['provision_request' => $provision_request, '_token' => csrf_token()]) }}">Retry <i class="redo circle icon"></i></a>
+            <a class="ui icon button" href="{{ route('provision-request-index', ['configuration_id' => $provision_request->configuration_id, 'function_name' => $provision_request->function_name]) }}">View Related <i class="zoom-in icon"></i></a>
             <a class="ui icon button" id="provision-request-delete-button">Delete <i class="red trash icon"></i></a>
         </div>
         @if($provision_request->isSuccess())

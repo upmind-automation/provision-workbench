@@ -23,8 +23,8 @@
 @section('content')
     <div class="ui basic buttons">
         <a class="ui icon button" href="{{ route('provision-request-new', ['configuration_id' => $configuration->id]) }}">Run Function <i class="blue play circle icon"></i></a>
-        <a class="ui icon button" href="{{ route('provider-configuration-new', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier(), 'configuration_id' => $configuration->id]) }}">Duplicate <i class="primary copy icon"></i></a>
-        <a class="ui icon button" href="{{ route('provision-request-index', ['configuration_id' => $configuration->id]) }}">Related Requests <i class="zoom-in icon"></i></a>
+        <a class="ui icon button" href="{{ route('provider-configuration-new', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier(), 'configuration_id' => $configuration->id]) }}">Copy <i class="primary copy icon"></i></a>
+        <a class="ui icon button" href="{{ route('provision-request-index', ['configuration_id' => $configuration->id]) }}">View Requests <i class="zoom-in icon"></i></a>
         <a class="ui icon button" onclick="$('#configuration_delete_modal').modal('show');">Delete <i class="red trash icon"></i></a>
     </div>
     <h2>Update Configuration</h2>

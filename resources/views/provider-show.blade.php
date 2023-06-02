@@ -15,7 +15,7 @@
 
     <div class="ui basic buttons">
         <a class="ui icon button" href="{{ route('provision-request-new', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier()]) }}">Run Function <i class="blue play circle icon"></i></a>
-        <a class="ui icon button" href="{{ route('provision-request-index', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier()]) }}">Related Requests <i class="zoom-in icon"></i></a>
+        <a class="ui icon button" href="{{ route('provision-request-index', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier()]) }}">View Requests <i class="zoom-in icon"></i></a>
         <a class="ui icon button" href="{{ route('provider-configuration-new', ['category_code' => $category->getIdentifier(), 'provider_code' => $provider->getIdentifier()]) }}">New Configuration <i class="green add circle icon"></i></a>
     </div>
 
