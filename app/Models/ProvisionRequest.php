@@ -188,4 +188,9 @@ class ProvisionRequest extends Model
     {
         return $this->result_status === Result::STATUS_ERROR;
     }
+
+    public function setResultDataAttribute($data)
+    {
+        $this->attributes['result_data'] = json_encode($data, JSON_INVALID_UTF8_SUBSTITUTE | JSON_THROW_ON_ERROR);
+    }
 }
