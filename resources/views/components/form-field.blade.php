@@ -43,7 +43,7 @@
     @endcomponent
 @else
     {{-- Array of fields --}}
-    @foreach($value as $i => $v)
+    @foreach(Arr::wrap($value) as $i => $v)
         @component('components.html-field', [
             'field_label' => $i,
             'field_type' => $field->type(),
@@ -91,7 +91,7 @@
             if (typeof window.formFieldIncrements == 'undefined') {
                 window.formFieldIncrements = [];
             }
-            window.formFieldIncrements['{{ $field_id }}'] = {{ Arr::last(array_keys($value)) + 1 }};
+            window.formFieldIncrements['{{ $field_id }}'] = {{ Arr::last(array_keys(Arr::wrap($value))) + 1 }};
         </script>
     @endif
 @endif
