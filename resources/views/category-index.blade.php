@@ -45,7 +45,7 @@
 
     <div class="ui link cards">
         @foreach($categories as $category)
-            <a class="ui fluid card" style="max-width:320px" href="{{ route('category-show', ['category_code' => $category->getIdentifier()]) }}">
+            <a class="ui fluid card" style="max-width:335px" href="{{ route('category-show', ['category_code' => $category->getIdentifier()]) }}">
                 <div class="image">
                     {{-- <img style="object-fit:cover; max-height:175px" src="{{ $category->getAbout()->logo_url ?? url('assets/images/placeholder.png') }}" alt="{{ $category->getIdentifier() }}"> --}}
                     <div style="padding:1rem;"><i class="massive black {{ $category->getAbout()->icon }} icon" style="width:100%;"></i></div>
