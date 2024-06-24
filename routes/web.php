@@ -26,7 +26,7 @@ Route::get('/configurations/{configuration}', ProviderConfigurationShowControlle
 Route::put('/configurations/{configuration}', ProviderConfigurationUpdateController::class)->name('provider-configuration-update');
 Route::delete('/configurations/{configuration}', ProviderConfigurationDestroyController::class)->name('provider-configuration-destroy');
 Route::get('/provision_requests', ProvisionRequestIndexController::class)->name('provision-request-index');
-Route::post('/provision_requests/new', ProvisionRequestNewController::class)->name('provision-request-new');
+Route::post('/provision_requests/new', ProvisionRequestNewController::class)->name('provision-request-new-post');
 Route::get('/provision_requests/new', ProvisionRequestNewController::class)->name('provision-request-new');
 Route::post('/provision_requests', ProvisionRequestStoreController::class)->name('provision-request-store');
 Route::get('/provision_requests/{provision_request}/retry/{_token}', ProvisionRequestRetryController::class)->name('provision-request-retry');

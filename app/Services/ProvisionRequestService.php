@@ -106,8 +106,7 @@ class ProvisionRequestService
         $provider = $factory->create(
             $request->category_code,
             $request->provider_code,
-            $request->configuration->data,
-            $this->makeStorageConfiguration($request)
+            $request->configuration->data
         );
 
         return $provider->makeJob($request->function_name, $request->parameter_data);
@@ -125,18 +124,5 @@ class ProvisionRequestService
         Config::set(sprintf('logging.channels.%s', $loggerConfigKey), $loggerConfig);
 
         return Log::channel($loggerConfigKey);
-    }
-
-    protected function makeStorageConfiguration(ProvisionRequest $request): StorageConfiguration
-    {
-        return new StorageConfiguration([
-            'base_path' => storage_path(sprintf(
-                'provisioning/%s/%s/%s',
-                $request->category_code,
-                $request->provider_code,
-                $request->configuration_id
-            )),
-            'secret_key' => Str::after(config('app.key'), 'base64:'),
-        ]);
     }
 }

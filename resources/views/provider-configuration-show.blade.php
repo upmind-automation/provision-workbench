@@ -1,5 +1,5 @@
 @php
-    use Upmind\ProvisionBase\Laravel\Html\HtmlField;
+    use Upmind\ProvisionBase\Laravel\Html\FormField;
     use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Data\CategoryRegister $category */
     /** @var \Upmind\ProvisionBase\Registry\Data\ProviderRegister $provider */
@@ -43,7 +43,7 @@
         @csrf
         @component('components.html-field', [
             'field_label' => 'Name',
-            'field_type' => HtmlField::TYPE_INPUT_TEXT,
+            'field_type' => FormField::TYPE_INPUT_TEXT,
             'field_id' => 'configuration_name',
             'field_name' => 'name',
             'field_required' => true,

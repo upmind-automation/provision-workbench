@@ -1,6 +1,6 @@
 @php
     use App\Models\ProviderConfiguration;
-    use Upmind\ProvisionBase\Laravel\Html\HtmlField;
+    use Upmind\ProvisionBase\Laravel\Html\FormField;
     use Upmind\ProvisionBase\Laravel\Html\OptionData;
     use Upmind\ProvisionBase\Registry\Data\CategoryRegister;
     use Upmind\ProvisionBase\Registry\Data\FunctionRegister;
@@ -22,7 +22,7 @@
         <form class="ui form" method="GET" action="{{ route('provision-request-new') }}">
             @component('components.html-field', [
                 'field_label' => 'Category',
-                'field_type' => HtmlField::TYPE_SELECT,
+                'field_type' => FormField::TYPE_SELECT,
                 'field_id' => 'category_code',
                 'field_name' => 'category_code',
                 'field_classes' => isset($category) ? ['disabled field'] : [],
@@ -55,7 +55,7 @@
                 <input type="hidden" name="category_code" value="{{ $category->getIdentifier() }}"/>
                 @component('components.html-field', [
                     'field_label' => 'Provider',
-                    'field_type' => HtmlField::TYPE_SELECT,
+                    'field_type' => FormField::TYPE_SELECT,
                     'field_id' => 'provider_code',
                     'field_name' => 'provider_code',
                     'field_classes' => isset($provider) ? ['disabled field'] : [],
@@ -102,7 +102,7 @@
                     @else
                         @component('components.html-field', [
                             'field_label' => 'Configuration',
-                            'field_type' => HtmlField::TYPE_SELECT,
+                            'field_type' => FormField::TYPE_SELECT,
                             'field_id' => 'configuration_id',
                             'field_name' => 'configuration_id',
                             'field_classes' => isset($configuration) ? ['disabled field'] : [],
@@ -147,7 +147,7 @@
                         @endif
                         @component('components.html-field', [
                             'field_label' => 'Function',
-                            'field_type' => HtmlField::TYPE_SELECT,
+                            'field_type' => FormField::TYPE_SELECT,
                             'field_id' => 'function_name',
                             'field_name' => 'function_name',
                             'field_classes' => isset($function) ? ['disabled field'] : [],
@@ -182,7 +182,7 @@
                             <input type="hidden" name="function_name" value="{{ $function->getName() }}"/>
                             <div class="ui secondary segment grouped fields">
                                 <h3 class="ui dividing header">Parameters</h3>
-                                @foreach($function->getParameter()->getRules()->toHtmlFields() as $html_field)
+                                @foreach($function->getParameter()->getRules()->toFormFields() as $html_field)
                                     @component('components.html-field', [
                                         'field_label' => $html_field->name(),
                                         'field_type' => $html_field->type(),
@@ -214,7 +214,7 @@
                                 <input type="hidden" name="function_name" value="{{ $function->getName() }}"/>
                                 @component('components.html-field', [
                                     'field_label' => 'JSON',
-                                    'field_type' => HtmlField::TYPE_TEXTAREA,
+                                    'field_type' => FormField::TYPE_TEXTAREA,
                                     'field_id' => 'parameter_json',
                                     'field_name' => 'parameter_json',
                                     'field_required' => true,

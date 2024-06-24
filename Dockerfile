@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.1-apache
 
 ENV APACHE_DOCUMENT_ROOT /provision-workbench/public
 ENV APACHE_RUN_DIR /var/lib/apache2/runtime
@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install zip intl soap sodium
 
-RUN pecl install xdebug-3.0.1 \
+RUN pecl install xdebug-3.2.1 \
     && pecl install uuid \
     && docker-php-ext-enable xdebug uuid
 
