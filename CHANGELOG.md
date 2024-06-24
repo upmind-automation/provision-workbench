@@ -2,6 +2,13 @@
 
 All notable changes to the package will be documented in this file.
 
+## v3.0.0 - 2024-06-24
+
+- Update PHP to v8.1
+- Update Laravel to v10
+- Update upmind/provision-provider-base to v4
+- Fix xdebug settings
+
 ## v2.1.1 - 2023-06-01
 
 - Allow opening of results modal for pending provision requests
