@@ -10,20 +10,19 @@
         }
     ],
     "require": {
-        "php": "^7.4",
-        "barryvdh/laravel-ide-helper": "^2.8",
-        "diglactic/laravel-breadcrumbs": "^8.0",
-        "fideloper/proxy": "^4.4",
-        "laravel/framework": "^6.20.26",
+        "php": "^8.1",
+        "barryvdh/laravel-ide-helper": "^3.0",
+        "diglactic/laravel-breadcrumbs": "^9.0",
+        "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",
-        "upmind/provision-provider-base": "^3.7",
-        "upmind/provision-provider-hello-world": "^1.0"
+        "upmind/provision-provider-base": "^4.1",
+        "upmind/provision-provider-hello-world": "^1.1"
     },
     "require-dev": {
-        "facade/ignition": "^1.16.15",
+        "spatie/laravel-ignition": "^2.0",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.5.8|^9.3.3"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0"
     },
     "repositories": [
         {

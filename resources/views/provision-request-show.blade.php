@@ -1,6 +1,6 @@
 @php
     use App\Models\ProviderConfiguration;
-    use Upmind\ProvisionBase\Laravel\Html\HtmlField;
+    use Upmind\ProvisionBase\Laravel\Html\FormField;
     use Upmind\ProvisionBase\Laravel\Html\OptionData;
     use Upmind\ProvisionBase\Registry\Data\CategoryRegister;
     use Upmind\ProvisionBase\Registry\Data\FunctionRegister;
@@ -168,7 +168,7 @@
             @endcomponent
             {{-- <div class="ui secondary segment grouped fields">
                 <h3 class="ui dividing header">Parameters</h3>
-                @foreach($function->getParameter()->getRules()->toHtmlFields() as $html_field)
+                @foreach($function->getParameter()->getRules()->toFormFields() as $html_field)
                     @component('components.html-field', [
                         'field_label' => $html_field->name(),
                         'field_type' => $html_field->type(),

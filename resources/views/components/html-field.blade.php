@@ -1,6 +1,6 @@
 @php
     use Illuminate\Support\Str;
-    use Upmind\ProvisionBase\Laravel\Html\HtmlField;
+    use Upmind\ProvisionBase\Laravel\Html\FormField;
 
     if (isset($field_options)) {
         // ensure options in the same group are adjacent to eachother
@@ -25,7 +25,7 @@
     'field_read_only' => $field_read_only ?? false,
 ])
     @switch ($field_type)
-        @case(HtmlField::TYPE_TEXTAREA)
+        @case(FormField::TYPE_TEXTAREA)
             <textarea
                 id="{{ $field_id }}"
                 name="{{ $field_name }}"
@@ -50,7 +50,7 @@
                 @endif
             >{{ trim($field_value ?? '') }}</textarea>
             @break
-        @case(HtmlField::TYPE_CHECKBOX)
+        @case(FormField::TYPE_CHECKBOX)
             <div class="ui @if ($field_read_only ?? false) read-only @endif fitted checkbox">
                 <!-- Default value false for checkbox --><input type="hidden" name="{{ $field_name }}" value="0">
                 <input
@@ -84,7 +84,7 @@
                 <label></label>
             </div>
             @break
-        @case(HtmlField::TYPE_INPUT_RADIO)
+        @case(FormField::TYPE_INPUT_RADIO)
             @foreach($field_options ?? [] as $option)
                 @php
                     /** @var \Upmind\ProvisionBase\Laravel\Html\OptionData $option */
@@ -122,7 +122,7 @@
                 </div>
             @endforeach
             @break
-        @case(HtmlField::TYPE_SELECT)
+        @case(FormField::TYPE_SELECT)
             <select
                 id="{{ $field_id }}"
                 name="{{ $field_name }}"
@@ -170,7 +170,7 @@
                 @endforeach
             </select>
             @break
-        @case(HtmlField::TYPE_INPUT_PASSWORD)
+        @case(FormField::TYPE_INPUT_PASSWORD)
             <div class="ui icon input">
                 <input
                     type="password"
