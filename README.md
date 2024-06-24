@@ -19,7 +19,7 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 ## Requirements
 
-- PHP ^7.4
+- PHP ^8.1
 - Composer
 
 ## Installation
@@ -28,7 +28,7 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 ### Install Locally
 
-- Requires PHP 7.4 and composer
+- Requires PHP ^8.1 and composer
 
 Create project:
 
