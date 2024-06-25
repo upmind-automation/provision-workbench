@@ -75,8 +75,6 @@ make clean
 
 <details><summary><h4>Install Locally</h4></summary>
 
-### Install Locally
-
 - Requires PHP ^8.1 and composer
 
 Create project:
