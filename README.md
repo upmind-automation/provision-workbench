@@ -7,8 +7,8 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 - [Requirements](#requirements)
 - [Installation](#installation)
   - [Locally](#install-locally)
-  - [Using Docker](#using-docker)
-- [Quick-start](#quick-start)
+  - [Using Makefile](#using-makefile)
+- [Development Quick-start](#development-quick-start)
 - [Usage](#usage)
   - [Screenshots](#screenshots)
 - [Changelog](#changelog)
@@ -42,16 +42,37 @@ Run application:
 php artisan serve
 ```
 
-### Using Docker
+### Using Makefile
 
-- Requires git and docker
+- Requires `git` and `docker`
 
 Clone git repository:
 
 ```bash
 git clone https://github.com/upmind-automation/provision-workbench.git && cd provision-workbench
-
 ```
+
+Build and run container (first build may take a few minutes):
+
+```bash
+make setup
+```
+
+You'll then be able to access the workbench in a web browser at http://127.0.0.1:8000.
+
+Connect to container (for artisan, composer etc):
+
+```bash
+make shell
+```
+
+Re-cache provision registry (e.g., after adding a new provider or updating data set rules):
+
+```bash
+make provision-cache
+```
+
+<details><summary><h4>Manually Using Docker</h4></summary>
 
 Build image (may take a few minutes):
 
@@ -62,17 +83,31 @@ docker build -t provision-workbench .
 Run container:
 
 ```bash
-docker run --rm -it -v $(pwd):/provision-workbench -p 8000:80 provision-workbench
+docker run -d --name provision-workbench -v $(pwd):/provision-workbench -p 8000:80 provision-workbench
 ```
 
 You'll then be able to access the workbench in a web browser at http://127.0.0.1:8000.
 
 Connect to container (for artisan, composer etc):
 ```bash
-docker exec -it $(docker container ls  | grep 'provision-workbench' | awk '{print $1}') /bin/bash
+docker exec -it provision-workbench /bin/bash
 ```
 
-## Quick-start
+Stop container:
+
+```bash
+docker stop provision-workbench
+```
+
+Remove container + image:
+
+```bash
+docker rm provision-workbench && docker rmi provision-workbench
+```
+
+</details>
+
+## Development Quick-start
 
 Install a provision category + providers e.g., shared-hosting:
 
