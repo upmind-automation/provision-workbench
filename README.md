@@ -6,8 +6,8 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 - [Requirements](#requirements)
 - [Installation](#installation)
+  - [Docker (Recommended)](#using-makefile)
   - [Locally](#install-locally)
-  - [Using Makefile](#using-makefile)
 - [Development Quick-start](#development-quick-start)
 - [Usage](#usage)
   - [Screenshots](#screenshots)
@@ -19,6 +19,13 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 ## Requirements
 
+To install and run the workbench using Docker via Makefile (recommended) you will need:
+
+- Git
+- Docker
+
+To install and run the workbench manually (not recommended) you will need:
+
 - PHP ^8.1
 - Composer
 
@@ -26,25 +33,7 @@ A simple web application which provides a UI for quick and easy testing of Upmin
 
 **This project is intended to be used as a local development tool only and should NOT be hosted on the internet**
 
-### Install Locally
-
-- Requires PHP ^8.1 and composer
-
-Create project:
-
-```bash
-composer create-project upmind/provision-workbench --keep-vcs
-```
-
-Run application:
-
-```bash
-php artisan serve
-```
-
 ### Using Makefile
-
-- Requires `git` and `docker`
 
 Clone git repository:
 
@@ -72,37 +61,34 @@ Re-cache provision registry (e.g., after adding a new provider or updating data 
 make provision-cache
 ```
 
-<details><summary><h4>Manually Using Docker</h4></summary>
-
-Build image (may take a few minutes):
-
-```bash
-docker build -t provision-workbench .
-```
-
-Run container:
-
-```bash
-docker run -d --name provision-workbench -v $(pwd):/provision-workbench -p 8000:80 provision-workbench
-```
-
-You'll then be able to access the workbench in a web browser at http://127.0.0.1:8000.
-
-Connect to container (for artisan, composer etc):
-```bash
-docker exec -it provision-workbench /bin/bash
-```
-
 Stop container:
 
 ```bash
-docker stop provision-workbench
+make stop
 ```
 
-Remove container + image:
+Remove container and image:
 
 ```bash
-docker rm provision-workbench && docker rmi provision-workbench
+make clean
+```
+
+<details><summary><h4>Install Locally</h4></summary>
+
+### Install Locally
+
+- Requires PHP ^8.1 and composer
+
+Create project:
+
+```bash
+composer create-project upmind/provision-workbench --keep-vcs
+```
+
+Run application:
+
+```bash
+php artisan serve
 ```
 
 </details>
