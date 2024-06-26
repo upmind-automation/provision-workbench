@@ -1,15 +1,31 @@
-/node_modules
+# Application
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
 .env
 .env.backup
-.phpunit.result.cache
+
+# Local dev
+local/
+database/database.sqlite
 Homestead.json
 Homestead.yaml
+
+# Package Managers
+/node_modules
+/vendor
+
+# Testing
+phpunit.xml
+.phpunit.result.cache
+
+# Logs
 npm-debug.log
 yarn-error.log
-.DS_Store
-database/database.sqlite
+
+# IDE & Text Editors
+.idea/
 .vscode/
+
+# OS files
+.DS_Store
