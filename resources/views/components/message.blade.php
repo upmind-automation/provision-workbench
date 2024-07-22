@@ -18,4 +18,9 @@
             @if(isset($message_label_icon))<i class="icon {{ $message_label_icon }}"></i>@endif {{ $message_label }}
         </span>
     @endif
+    @if(isset($message_label_2))
+        <span class="ui bottom right attached label @if(isset($message_colour)){{ $message_colour }}@endif">
+            @if(isset($message_label_icon_2))<i class="icon {{ $message_label_icon_2 }}"></i>@endif {{ $message_label_2 }}
+        </span>
+    @endif
 @if(isset($message_href)) </a @else </div @endif >

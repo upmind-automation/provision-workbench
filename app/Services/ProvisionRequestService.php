@@ -59,12 +59,16 @@ class ProvisionRequestService
         }
 
         $logger = $this->makeLogger($request);
+
+        $peakMemoryBefore = memory_get_peak_usage(true);
         $result = $this->makeProviderJob($request, $logger)->execute();
+        $peakMemoryAfter = memory_get_peak_usage(true);
 
         $request->result_status = $result->getStatus();
         $request->result_message = $result->getMessage();
         $request->result_data = $result->getOutput();
         $request->execution_time = $result->getDebug()['execution_time'] ?? null;
+        $request->peak_memory_usage = $this->getHumanReadableBytes($peakMemoryAfter - $peakMemoryBefore);
         $request->save();
 
         if ($e = $result->getException()) {
@@ -90,6 +94,19 @@ class ProvisionRequestService
         }
 
         $request->delete();
+    }
+
+    protected function getHumanReadableBytes(int $bytes): string
+    {
+        $units = array('B', 'KB', 'MB', 'GB', 'TB');
+        $formatted = $bytes;
+
+        for ($i = 0; $bytes >= 1024 && $i < count($units) - 1; $i++) {
+            $bytes /= 1024;
+            $formatted = round($bytes, 2);
+        }
+
+        return $formatted . ' ' . $units[$i];
     }
 
     protected function getLogPath(ProvisionRequest $request): string

@@ -47,6 +47,8 @@
                 'message_text' => $provision_request->result_message,
                 'message_label_icon' => 'clock',
                 'message_label' => $provision_request->execution_time . 's',
+                'message_label_icon_2' => 'microchip',
+                'message_label_2' => $provision_request->peak_memory_usage,
                 'message_cursor' => 'pointer',
                 'message_id' => 'provision-result-message',
                 'message_tooltip' => 'View details',
@@ -60,6 +62,8 @@
                 'message_text' => $provision_request->result_message,
                 'message_label_icon' => 'clock',
                 'message_label' => $provision_request->execution_time . 's',
+                'message_label_icon_2' => 'microchip',
+                'message_label_2' => $provision_request->peak_memory_usage,
                 'message_cursor' => 'pointer',
                 'message_id' => 'provision-result-message',
                 'message_tooltip' => 'View details',
@@ -213,6 +217,8 @@
                     'message_text' => $provision_request->result_message,
                     'message_label_icon' => 'clock',
                     'message_label' => $provision_request->execution_time . 's',
+                    'message_label_icon_2' => 'microchip',
+                    'message_label_2' => $provision_request->peak_memory_usage,
                 ])
                 @endcomponent
             @elseif($provision_request->isError())
@@ -223,6 +229,8 @@
                     'message_text' => $provision_request->result_message,
                     'message_label_icon' => 'clock',
                     'message_label' => $provision_request->execution_time . 's',
+                    'message_label_icon_2' => 'microchip',
+                    'message_label_2' => $provision_request->peak_memory_usage,
                 ])
                 @endcomponent
             @else
