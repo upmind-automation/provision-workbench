@@ -2,6 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
+## v3.0.1 - 2024-07-22
+
+- Add peak_memory_usage to provision request logs
+
 ## v3.0.0 - 2024-06-24
 
 - Update PHP to v8.1
