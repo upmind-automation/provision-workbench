@@ -2,6 +2,10 @@
 
 All notable changes to the package will be documented in this file.
 
+## v3.0.2 - 2024-07-30
+
+- Update provider=configuration new and show views to support form groups
+
 ## v3.0.1 - 2024-07-22
 
 - Add peak_memory_usage to provision request logs
