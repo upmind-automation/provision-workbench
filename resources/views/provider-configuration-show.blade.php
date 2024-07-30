@@ -1,5 +1,6 @@
 @php
     use Upmind\ProvisionBase\Laravel\Html\FormField;
+    use Upmind\ProvisionBase\Laravel\Html\FormGroup;
     use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Data\CategoryRegister $category */
     /** @var \Upmind\ProvisionBase\Registry\Data\ProviderRegister $provider */
@@ -53,7 +54,26 @@
         @endcomponent
         <div class="ui secondary segment grouped fields">
             <h3 class="ui header dividing">Data</h3>
-            @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $form_field)
+
+            @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $element)
+                @if ($element instanceof FormGroup)
+                    @component('components.form-group', [
+                        'group' => $element,
+                        'values' => Request::input('field_values.' . $element->name()) ?? Arr::get($configuration->data, $element->name()),
+                        'name_pattern' => 'field_values[%s]',
+                    ])
+                    @endcomponent
+                @else
+                    @component('components.form-field', [
+                        'field' => $element,
+                        'value' => Request::input('field_values.' . $element->name()) ?? Arr::get($configuration->data, $element->name()),
+                        'name_pattern' => 'field_values[%s]',
+                    ])
+                    @endcomponent
+                @endif
+            @endforeach
+
+            {{-- @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $form_field)
                 @component('components.html-field', [
                     'field_label' => $form_field->name(),
                     'field_type' => $form_field->type(),
@@ -67,7 +87,9 @@
                     'field_errors' => $errors->getBag('field_values')->get($form_field->name()),
                 ])
                 @endcomponent
-            @endforeach
+            @endforeach --}}
+
+
         </div>
         <div class="ui field">
             <button class="ui primary button right labeled icon button" type="submit">Update<i class="save icon"></i></button>

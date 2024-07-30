@@ -1,5 +1,6 @@
 @php
     use Upmind\ProvisionBase\Laravel\Html\FormField;
+    use Upmind\ProvisionBase\Laravel\Html\FormGroup;
     use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Data\CategoryRegister $category */
     /** @var \Upmind\ProvisionBase\Registry\Data\ProviderRegister $provider */
@@ -34,20 +35,23 @@
         @endcomponent
         <div class="ui secondary segment grouped fields">
             <h3 class="ui header">Configuration Data</h3>
-            @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $form_field)
-                @component('components.html-field', [
-                    'field_label' => $form_field->name(),
-                    'field_type' => $form_field->type(),
-                    'field_id' => 'field_values_' . $form_field->name(),
-                    'field_name' => 'field_values[' . $form_field->name() . ']',
-                    'field_options' => $form_field->options(),
-                    'field_attributes' => $form_field->attributes(),
-                    'field_validation_rules' => $form_field->validationRules(),
-                    'field_required' => $form_field->required(),
-                    'field_value' => Request::input('field_values.' . $form_field->name()) ?? Arr::get($field_values, $form_field->name()),
-                    'field_errors' => $errors->getBag('field_values')->get($form_field->name()),
-                ])
-                @endcomponent
+
+            @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $element)
+                @if ($element instanceof FormGroup)
+                    @component('components.form-group', [
+                        'group' => $element,
+                        'values' => Request::input('field_values.' . $element->name()) ?? Arr::get($field_values, $element->name()),
+                        'name_pattern' => 'field_values[%s]',
+                    ])
+                    @endcomponent
+                @else
+                    @component('components.form-field', [
+                        'field' => $element,
+                        'value' => Request::input('field_values.' . $element->name()) ?? Arr::get($field_values, $element->name()),
+                        'name_pattern' => 'field_values[%s]',
+                    ])
+                    @endcomponent
+                @endif
             @endforeach
         </div>
         <div class="ui field">
