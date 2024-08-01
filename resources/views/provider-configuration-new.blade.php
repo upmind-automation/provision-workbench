@@ -35,7 +35,6 @@
         @endcomponent
         <div class="ui secondary segment grouped fields">
             <h3 class="ui header">Configuration Data</h3>
-
             @foreach($provider->getConstructor()->getParameter()->getRules()->toHtmlForm()->elements() as $element)
                 @if ($element instanceof FormGroup)
                     @component('components.form-group', [
