@@ -12,6 +12,7 @@ Homestead.json
 Homestead.yaml
 _ide_helper.php
 _ide_helper_models.php
+.phpstorm.meta.php
 
 # Package Managers
 /node_modules
