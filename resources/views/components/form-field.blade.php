@@ -4,6 +4,7 @@
 
     /** @var string $name_pattern */
     /** @var \Upmind\ProvisionBase\Laravel\Html\FormField $field */
+    /** @var string $value */
 
     $field_id = sprintf($name_pattern, $field->name());
     $field_name = sprintf($name_pattern, $field->name());

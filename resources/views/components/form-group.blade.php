@@ -3,6 +3,10 @@
     use Upmind\ProvisionBase\Laravel\Html\FormGroup;
     use Upmind\ProvisionBase\Laravel\Html\FormField;
 
+    /** @var string $name_pattern */
+    /** @var Upmind\ProvisionBase\Laravel\Html\FormGroup $group */
+    /** @var array $values */
+
     $group_id = sprintf($name_pattern, $group->name());
     $disabled = $disabled ?? false;
     $has_values = is_array($values ?? null) && !empty(array_filter($values));
