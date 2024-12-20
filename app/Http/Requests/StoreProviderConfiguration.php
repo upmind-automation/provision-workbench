@@ -36,8 +36,9 @@ class StoreProviderConfiguration extends FormRequest
                 'nullable',
                 new ProviderConfigurationRule(
                     $registry,
-                    $this->route('category_code'),
-                    $this->route('provider_code')
+                    // We don't really expect these to be any other than strings.
+                    (string) $this->route('category_code'),
+                    (string) $this->route('provider_code')
                 )
             ],
         ];
