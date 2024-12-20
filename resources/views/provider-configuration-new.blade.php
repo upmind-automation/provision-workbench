@@ -23,7 +23,6 @@
         ]) }}"
     >
         @csrf
-        {{-- ToDo: This component html field is probably redundant, confirm and remove --}}
         @component('components.html-field', [
             'field_label' => 'Name',
             'field_type' => FormField::TYPE_INPUT_TEXT,
