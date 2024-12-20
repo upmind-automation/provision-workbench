@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\InteractsWithRegistry;
 use App\Http\Controllers\Traits\TransformsArrayDot;
+use App\Http\Requests\StoreProviderConfiguration;
 use App\Services\ProviderConfigurationService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -17,7 +18,7 @@ class ProviderConfigurationStoreController extends Controller
     use InteractsWithRegistry;
     use TransformsArrayDot;
 
-    public function __invoke(Request $request, Registry $registry)
+    public function __invoke(StoreProviderConfiguration $request, Registry $registry)
     {
         $provider = $this->getProvider($registry, $request);
 

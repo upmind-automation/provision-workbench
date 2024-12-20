@@ -4,6 +4,7 @@
     use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Data\CategoryRegister $category */
     /** @var \Upmind\ProvisionBase\Registry\Data\ProviderRegister $provider */
+    /** @var \Illuminate\Support\ViewErrorBag $errors */
 @endphp
 
 @extends('layouts.main')
@@ -30,7 +31,7 @@
             'field_name' => 'name',
             'field_required' => true,
             'field_value' => Request::input('name') ?? $name,
-            'field_errors' => []
+            'field_errors' => $errors->get('name'),
         ])
         @endcomponent
         <div class="ui secondary segment grouped fields">
