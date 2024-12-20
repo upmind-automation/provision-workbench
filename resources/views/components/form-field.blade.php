@@ -2,6 +2,7 @@
     use Illuminate\Support\Str;
     use Upmind\ProvisionBase\Laravel\Html\FormGroup;
 
+    /** @var \Illuminate\Support\ViewErrorBag $errors */
     /** @var string $name_pattern */
     /** @var \Upmind\ProvisionBase\Laravel\Html\FormField $field */
     /** @var string $value */
@@ -36,8 +37,7 @@
         'field_validation_rules' => $field->validationRules(),
         'field_required' => $field->required(),
         'field_value' => $value,
-        // 'field_errors' => $errors->getBag('parameter_data')->get($html_field->name()),
-        'field_errors' => [],
+        'field_errors' => $errors->get($field->name()),
         // 'field_autofocus' => count($loops) === 1 && ($loops[0]->first ?? false),
         'field_autofocus' => false,
         'field_disabled' => $field_disabled,
@@ -56,8 +56,7 @@
             'field_validation_rules' => $field->validationRules(),
             'field_required' => $field->required(),
             'field_value' => $v,
-            // 'field_errors' => $errors->getBag('parameter_data')->get($html_field->name()),
-            'field_errors' => [],
+            'field_errors' => $errors->get($field->name()),
             // 'field_autofocus' => count($loops) === 1 && ($loops[0]->first ?? false),
             'field_autofocus' => false,
             'field_disabled' => $field_disabled,
@@ -76,8 +75,7 @@
                 'field_validation_rules' => $field->validationRules(),
                 'field_required' => $field->required(),
                 'field_value' => null,
-                // 'field_errors' => $errors->getBag('parameter_data')->get($html_field->name()),
-                'field_errors' => [],
+                'field_errors' => $errors->get($field->name()),
                 // 'field_autofocus' => count($loops) === 1 && ($loops[0]->first ?? false),
                 'field_autofocus' => false,
                 'field_disabled' => $field_disabled,

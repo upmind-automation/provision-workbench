@@ -1,7 +1,6 @@
 @php
     use Upmind\ProvisionBase\Laravel\Html\FormField;
     use Upmind\ProvisionBase\Laravel\Html\FormGroup;
-    use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Data\CategoryRegister $category */
     /** @var \Upmind\ProvisionBase\Registry\Data\ProviderRegister $provider */
     /** @var \Illuminate\Support\ViewErrorBag $errors */
@@ -57,12 +56,6 @@
                         'name_pattern' => 'field_values[%s]',
                     ])
                     @endcomponent
-                    @error($element->name())
-                        <div class="ui red pointing label">
-                            {{ $message }}
-                            <i class="close icon" onclick="this.parentElement.classList.add('hidden')"></i>
-                        </div>
-                    @enderror
                 @endif
             @endforeach
         </div>
