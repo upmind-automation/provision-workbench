@@ -1,7 +1,5 @@
 @php
-    use Upmind\ProvisionBase\Laravel\Html\FormElement;
     use Upmind\ProvisionBase\Laravel\Html\FormGroup;
-    use Upmind\ProvisionBase\Laravel\Html\FormField;
 
     /** @var string $name_pattern */
     /** @var Upmind\ProvisionBase\Laravel\Html\FormGroup $group */
