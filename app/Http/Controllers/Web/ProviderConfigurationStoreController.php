@@ -29,7 +29,7 @@ class ProviderConfigurationStoreController extends Controller
                 $this->undot($request->get('field_values', []))
             );
         } catch (ValidationException $e) {
-            return redirect()->back()->withErrors($e->errors(), 'field_values');
+            return redirect()->back()->withErrors($e->errors());
         }
 
         return redirect(route('provider-configuration-show', [

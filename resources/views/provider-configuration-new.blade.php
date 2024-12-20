@@ -23,6 +23,7 @@
         ]) }}"
     >
         @csrf
+        {{-- ToDo: This component html field is probably redundant, confirm and remove --}}
         @component('components.html-field', [
             'field_label' => 'Name',
             'field_type' => FormField::TYPE_INPUT_TEXT,
@@ -30,7 +31,7 @@
             'field_name' => 'name',
             'field_required' => true,
             'field_value' => Request::input('name') ?? $name,
-            'field_errors' => $errors->getBag('default')->get('name'),
+            'field_errors' => []
         ])
         @endcomponent
         <div class="ui secondary segment grouped fields">
@@ -43,6 +44,12 @@
                         'name_pattern' => 'field_values[%s]',
                     ])
                     @endcomponent
+                    @error($element->name())
+                        <div class="ui red pointing label">
+                            {{ $message }}
+                            <i class="close icon" onclick="this.parentElement.classList.add('hidden')"></i>
+                        </div>
+                    @enderror
                 @else
                     @component('components.form-field', [
                         'field' => $element,
@@ -50,6 +57,12 @@
                         'name_pattern' => 'field_values[%s]',
                     ])
                     @endcomponent
+                    @error($element->name())
+                        <div class="ui red pointing label">
+                            {{ $message }}
+                            <i class="close icon" onclick="this.parentElement.classList.add('hidden')"></i>
+                        </div>
+                    @enderror
                 @endif
             @endforeach
         </div>
