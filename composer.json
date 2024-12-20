@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.1",
         "diglactic/laravel-breadcrumbs": "^9.0",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",

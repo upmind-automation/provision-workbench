@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.1-apache
 
 ENV APACHE_DOCUMENT_ROOT=/provision-workbench/public
 ENV APACHE_RUN_DIR=/var/lib/apache2/runtime
