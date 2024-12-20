@@ -4,6 +4,9 @@
     use Upmind\ProvisionBase\Laravel\Html\FormGroup;
     use Upmind\ProvisionBase\Laravel\Html\FormField;
 
+    /** @var string $name_pattern */
+    /** @var \Upmind\ProvisionBase\Laravel\Html\FormField $field */
+
     $field_id = sprintf($name_pattern, $field->name());
     $field_name = sprintf($name_pattern, $field->name());
     $field_disabled = $disabled ?? false;
