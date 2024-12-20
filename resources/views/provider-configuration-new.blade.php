@@ -43,12 +43,6 @@
                         'name_pattern' => 'field_values[%s]',
                     ])
                     @endcomponent
-                    @error($element->name())
-                        <div class="ui red pointing label">
-                            {{ $message }}
-                            <i class="close icon" onclick="this.parentElement.classList.add('hidden')"></i>
-                        </div>
-                    @enderror
                 @else
                     @component('components.form-field', [
                         'field' => $element,
