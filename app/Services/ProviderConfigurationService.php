@@ -20,8 +20,6 @@ class ProviderConfigurationService
         string $name,
         array $data
     ): ProviderConfiguration {
-        $this->validateData($provider, $data);
-
         $configuration = new ProviderConfiguration();
         $configuration->name = $name;
         $configuration->category_code = $provider->getCategory()->getIdentifier();

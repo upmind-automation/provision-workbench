@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
+use App\Rules\ProviderConfigurationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Upmind\ProvisionBase\Registry\Registry;
 
 class StoreProviderConfiguration extends FormRequest
 {
@@ -21,14 +23,23 @@ class StoreProviderConfiguration extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules(Registry $registry): array
     {
         return [
             'name' => [
                 'required',
                 'string',
                 'max:255'
-            ]
+            ],
+            'field_values' => [
+                'array',
+                'nullable',
+                new ProviderConfigurationRule(
+                    $registry,
+                    $this->route('category_code'),
+                    $this->route('provider_code')
+                )
+            ],
         ];
     }
 }
