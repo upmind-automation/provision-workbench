@@ -6,6 +6,7 @@
     use Upmind\ProvisionBase\Registry\Data\FunctionRegister;
     use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
     /** @var \Upmind\ProvisionBase\Registry\Registry $registry */
+    /** @var \Illuminate\Support\ViewErrorBag $errors */
 @endphp
 
 @extends('layouts.main')

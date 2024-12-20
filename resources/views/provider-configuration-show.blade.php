@@ -5,6 +5,7 @@
     /** @var \Upmind\ProvisionBase\Registry\Data\CategoryRegister $category */
     /** @var \Upmind\ProvisionBase\Registry\Data\ProviderRegister $provider */
     /** @var \App\Models\ProviderConfiguration $configuration */
+    /** @var \Illuminate\Support\ViewErrorBag $errors */
 @endphp
 
 @extends('layouts.main')
@@ -49,7 +50,7 @@
             'field_name' => 'name',
             'field_required' => true,
             'field_value' => Request::input('name') ?? $configuration->name,
-            'field_errors' => $errors->getBag('default')->get('name'),
+            'field_errors' => $errors->get('name'),
         ])
         @endcomponent
         <div class="ui secondary segment grouped fields">
