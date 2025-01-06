@@ -8,7 +8,7 @@ use App\Factories\Rules\ProviderConfigurationRuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
 use Upmind\ProvisionBase\Registry\Registry;
 
-class StoreProviderConfiguration extends FormRequest
+class ProviderConfigurationStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
