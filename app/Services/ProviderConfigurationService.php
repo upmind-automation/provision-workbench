@@ -6,8 +6,6 @@ namespace App\Services;
 
 use App\Models\ProviderConfiguration;
 use App\Models\ProvisionRequest;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
 
 class ProviderConfigurationService
@@ -50,15 +48,5 @@ class ProviderConfigurationService
             });
 
         $configuration->delete();
-    }
-
-    /**
-     * @throws ValidationException If the given configuration data is invalid
-     */
-    protected function validateData(ProviderRegister $provider, array $data): void
-    {
-        $rules = $provider->getConstructor()->getParameter()->getRules()->expand();
-
-        Validator::make($data, $rules)->validate();
     }
 }
