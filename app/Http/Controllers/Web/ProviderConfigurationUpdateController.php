@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\InteractsWithRegistry;
 use App\Http\Controllers\Traits\TransformsArrayDot;
 use App\Http\Requests\ProviderConfigurationUpdateRequest;
 use App\Models\ProviderConfiguration;
@@ -15,7 +14,6 @@ use Illuminate\Routing\Redirector;
 
 class ProviderConfigurationUpdateController extends Controller
 {
-    use InteractsWithRegistry;
     use TransformsArrayDot;
 
     public function __construct(
@@ -30,8 +28,8 @@ class ProviderConfigurationUpdateController extends Controller
     ): RedirectResponse {
         $configuration = $this->service->update(
             $configuration,
-            $request->get('name'),
-            $this->undot($request->get('field_values', []))
+            $request->post('name'),
+            $this->undot($request->post('field_values', []))
         );
 
         return $this->redirector->route('provider-configuration-show', [
