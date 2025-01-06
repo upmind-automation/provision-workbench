@@ -31,8 +31,8 @@ class ProviderConfigurationStoreController extends Controller
 
         $configuration = $this->service->create(
             $provider,
-            $request->get('name'),
-            $this->undot($request->get('field_values', []))
+            $request->post('name'),
+            $this->undot($request->post('field_values', []))
         );
 
         return $this->redirector->route('provider-configuration-show', [
