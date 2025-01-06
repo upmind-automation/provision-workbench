@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
-use App\Rules\ProviderConfigurationRule;
+use App\Factories\Rules\ProviderConfigurationRuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
 use Upmind\ProvisionBase\Registry\Registry;
 
@@ -21,7 +21,9 @@ class StoreProviderConfiguration extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, array<array-key, string|\Illuminate\Contracts\Validation\ValidationRule>>
+     *
+     * @throws \InvalidArgumentException
      */
     public function rules(Registry $registry): array
     {
@@ -34,12 +36,12 @@ class StoreProviderConfiguration extends FormRequest
             'field_values' => [
                 'array',
                 'nullable',
-                new ProviderConfigurationRule(
-                    $registry,
+                ProviderConfigurationRuleFactory::create([
+                    'registry' => $registry,
                     // We don't really expect these to be any other than strings.
-                    (string) $this->route('category_code'),
-                    (string) $this->route('provider_code')
-                )
+                    'category_code' => (string) $this->route('category_code'),
+                    'provider_code' => (string) $this->route('provider_code'),
+                ]),
             ],
         ];
     }
