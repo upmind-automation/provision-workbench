@@ -12,11 +12,6 @@ use Upmind\ProvisionBase\Registry\Registry;
 
 class ProviderConfigurationRule implements ValidationRule, ValidatorAwareRule
 {
-    /**
-     * The validator instance.
-     *
-     * @var \Illuminate\Validation\Validator
-     */
     protected Validator $validator;
     private Registry $registry;
     private string $categoryCode;
@@ -55,7 +50,7 @@ class ProviderConfigurationRule implements ValidationRule, ValidatorAwareRule
         $this->validator->validate();
     }
 
-    public function setValidator(Validator $validator)
+    public function setValidator(Validator $validator): ProviderConfigurationRule|static
     {
         $this->validator = $validator;
 
