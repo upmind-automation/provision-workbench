@@ -27,16 +27,11 @@ class ProviderConfigurationService
         return $configuration;
     }
 
-    /**
-     * @throws ValidationException If the given configuration data is invalid
-     */
     public function update(
         ProviderConfiguration $configuration,
         string $name,
         array $data
     ): ProviderConfiguration {
-        $this->validateData($configuration->getProvider(), $data);
-
         $configuration->name = $name;
         $configuration->data = $data;
         $configuration->save();
