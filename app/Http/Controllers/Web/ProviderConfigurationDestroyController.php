@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\InteractsWithRegistry;
 use App\Models\ProviderConfiguration;
-use App\Services\ProviderConfigurationService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
