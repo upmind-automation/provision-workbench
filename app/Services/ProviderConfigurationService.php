@@ -12,8 +12,11 @@ use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
 
 class ProviderConfigurationService
 {
-    public function create(ProviderRegister $provider, string $name, array $data): ProviderConfiguration
-    {
+    public function create(
+        ProviderRegister $provider,
+        string $name,
+        array $data
+    ): ProviderConfiguration {
         $configuration = new ProviderConfiguration();
         $configuration->name = $name;
         $configuration->category_code = $provider->getCategory()->getIdentifier();

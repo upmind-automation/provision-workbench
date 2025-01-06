@@ -21,7 +21,7 @@ class ProviderConfigurationStoreRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, array<array-key, string|\Illuminate\Contracts\Validation\ValidationRule>>
+     * @return array<string, array<array-key, string|\App\Rules\ProviderConfigurationRule>>
      *
      * @throws \InvalidArgumentException
      */
