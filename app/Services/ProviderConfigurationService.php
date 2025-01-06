@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\ProviderConfiguration;
-use App\Models\ProvisionRequest;
 use Upmind\ProvisionBase\Registry\Data\ProviderRegister;
 
 class ProviderConfigurationService
@@ -35,18 +34,5 @@ class ProviderConfigurationService
         $configuration->save();
 
         return $configuration;
-    }
-
-    public function delete(ProviderConfiguration $configuration)
-    {
-        $requestService = new ProvisionRequestService();
-        ProvisionRequest::where('configuration_id', $configuration->id)
-            ->chunk(20, function ($requests) use ($requestService) {
-                foreach ($requests as $request) {
-                    $requestService->delete($request);
-                }
-            });
-
-        $configuration->delete();
     }
 }
