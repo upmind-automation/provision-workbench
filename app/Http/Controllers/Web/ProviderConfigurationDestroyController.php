@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\InteractsWithRegistry;
 use App\Models\ProviderConfiguration;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 
@@ -19,7 +20,7 @@ class ProviderConfigurationDestroyController extends Controller
     ) {
     }
 
-    public function __invoke(Request $request, ProviderConfiguration $configuration)
+    public function __invoke(Request $request, ProviderConfiguration $configuration): RedirectResponse
     {
         $configuration->delete();
 
